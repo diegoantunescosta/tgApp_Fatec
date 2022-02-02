@@ -1,4 +1,1 @@
-# Projeto: Me da uma plantinha
-
-Trabalho de graduação de Curso na Fatec Shunji Nishimura.
-
+# Projeto TG (Me dá uma plantinha)

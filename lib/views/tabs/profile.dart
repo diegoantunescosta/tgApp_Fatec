@@ -3,12 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
-class ProfilePage extends StatelessWidget {
-  final User user = users[0];
+
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState () => _ProfilePageState();
+
+}
+class _ProfilePageState extends State<ProfilePage> {
+
+  User _userData;
 
   @override
   Widget build(BuildContext context) {
+    Future<User> _getUser() async {
+      final prefs = await SharedPreferences.getInstance();
+      if (prefs.getKeys().contains('user')) {
+        _userData = User.fromJson(json.decode(prefs.getString('user')));
+      }
+      return _userData;
+    };
+
     final hr = Divider();
     final userStats = Positioned(
       bottom: 10.0,
@@ -17,9 +34,9 @@ class ProfilePage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          _buildUserStats('VISITORS', '2305'),
-          _buildUserStats('LIKED', '276'),
-          _buildUserStats('MATCHED', '51'),
+          _buildUserStats('VISITANTES', '2305'),
+          _buildUserStats('CURTIDAS', '276'),
+          _buildUserStats('SEGUIDORES', '51'),
         ],
       ),
     );
@@ -28,10 +45,10 @@ class ProfilePage extends StatelessWidget {
       height: 100.0,
       width: 100.0,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(user.photo),
-          fit: BoxFit.cover,
-        ),
+        // image: DecorationImage(
+        //   image: null,
+        //   fit: BoxFit.cover,
+        // ),
         shape: BoxShape.circle,
       ),
     );
@@ -42,14 +59,14 @@ class ProfilePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            user.name,
+            _userData.name,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w900,
             ),
           ),
           Text(
-            user.location,
+            'cidade',
             style: TextStyle(
               color: Colors.grey.withOpacity(0.6),
               fontSize: 20.0,
@@ -82,9 +99,9 @@ class ProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
                 child: Row(
                   children: <Widget>[
-                    userImage,
+                    // userImage,
                     SizedBox(width: 10.0),
-                    userNameLocation
+                     userNameLocation
                   ],
                 ),
               ),
@@ -102,18 +119,20 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-          height: 200.0,
+          height: 60.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTile(Icons.favorite, Colors.red, 'Likes'),
-              hr,
-              _buildIconTile(LineIcons.eye, Colors.green, 'Visitors'),
-              hr,
-              _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Groups'),
+            //   _buildIconTile(Icons.favorite, Colors.red, 'Likes'),
+            //   hr,
+            //   _buildIconTile(LineIcons.eye, Colors.green, 'Visitors'),
+            //   hr,
+              _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Grupos'),
+
+
             ],
           ),
         ),
@@ -127,22 +146,22 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-          height: 350.0,
+          height: 60.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTile(LineIcons.money, Colors.red, 'My Wallet'),
-              hr,
-              _buildIconTile(LineIcons.diamond, Colors.blue, 'VIP Center'),
-              hr,
-              _buildIconTile(LineIcons.user_plus, Colors.orangeAccent, 'Find Friends'),
-              hr,
-              _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist'),
-              hr,
-              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Settings'),
+              // _buildIconTile(LineIcons.money, Colors.red, 'My Wallet'),
+              // hr,
+              // _buildIconTile(LineIcons.diamond, Colors.blue, 'VIP Center'),
+              // hr,
+              // _buildIconTile(LineIcons.user_plus, Colors.orangeAccent, 'Find Friends'),
+              // hr,
+              // _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist'),
+              // hr,
+              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Configurações'),
             ],
           ),
         ),
@@ -155,23 +174,42 @@ class ProfilePage extends StatelessWidget {
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                        height: 350.0,
-                      ),
-                      Container(
-                        height: 250.0,
-                        decoration: BoxDecoration(gradient: primaryGradient),
-                      ),
-                      Positioned(top: 100, right: 0, left: 0, child: userInfo)
-                    ],
-                  ),
-                  secondCard, thirdCard
-                ],
-              ),
+              child: FutureBuilder (
+                future: _getUser(),
+                initialData: null ,
+                builder: (context,snapshot){
+                  switch(snapshot.connectionState){
+                      case  ConnectionState.waiting:
+                      case  ConnectionState.none:
+                        return Center();
+                      default:
+                        if (snapshot.hasError) return Container();
+                        else {
+                          if (snapshot.hasData) return
+                            Column(
+                              children: <Widget>[
+                                Stack(
+                                  children: <Widget>[
+                                    Container(
+                                      height: 350.0,
+                                    ),
+                                    Container(
+                                      height: 250.0,
+                                      decoration: BoxDecoration(gradient: primaryGradient),
+                                    ),
+                                    Positioned(top: 100, right: 0, left: 0, child: userInfo)
+                                  ],
+                                ),
+                                secondCard, thirdCard
+                              ],
+                            );
+                          else return Container();
+                        }
+                  }
+                }
+
+
+              )
             ),
           ],
         ),

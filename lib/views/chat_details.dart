@@ -11,13 +11,14 @@ class ChatDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final User user = users.singleWhere((user) => user.id == userId);
+    final User user = null;
 
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
 
     final userImage = InkWell(
-      onTap: () => Navigator.pushNamed(context, userDetailsViewRoute, arguments: user.id),
+      onTap: () => Navigator.pushNamed(context, userDetailsViewRoute,
+          arguments: user.id),
       child: Hero(
         tag: user.photo,
         child: Container(

@@ -11,7 +11,7 @@ class FeedsPage extends StatelessWidget {
     final pageTitle = Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 30.0),
       child: Text(
-        "Feed",
+        "Inicio",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.black,
@@ -34,20 +34,31 @@ class FeedsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    pageTitle,
-                    FeedCard1(feed: feeds[0]),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    FeedCard2(
-                      feed: feeds[1],
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    FeedCard3(
-                      feed: feeds[2],
-                    ),
+                    // pageTitle,
+                    // FeedCard3(
+                    //     feed: feeds[0]),
+                    // SizedBox(
+                    //   height: 10.0,
+                    // ),
+                    // FeedCard2(
+                    //   feed: feeds[2],
+                    // ),
+                    // SizedBox(
+                    //   height: 10.0,
+                    // ),
+                    // FeedCard3(
+                    //   feed: feeds[3],
+                    // ),
+                    // SizedBox(
+                    //   height: 10.0,
+                    // ),
+                    // FeedCard2(
+                    //   feed: feeds[4],
+                    // ),
+                    // SizedBox(
+                    //   height: 10.0,
+                    // ),
+
                   ],
                 ),
               )

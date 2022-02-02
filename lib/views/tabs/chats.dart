@@ -38,7 +38,7 @@ class ChatsPage extends StatelessWidget {
             color: Colors.grey,
           ),
           contentPadding: EdgeInsets.only(top: 15.0),
-          hintText: 'Search...',
+          hintText: 'Procurar...',
           hintStyle: TextStyle(
             color: Colors.grey.withOpacity(0.6),
             fontWeight: FontWeight.w600,
@@ -48,7 +48,7 @@ class ChatsPage extends StatelessWidget {
     );
 
     final onlineUsersHeading = Text(
-      "ONLINE USERS",
+      "Usuários Online",
       style: TextStyle(
         color: Colors.grey.withOpacity(0.6),
         fontWeight: FontWeight.w600,
@@ -60,7 +60,7 @@ class ChatsPage extends StatelessWidget {
       height: 100.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: users.map((user) => _buildUserCard(user, context)).toList(),
+        children: null
       ),
     );
 
@@ -81,7 +81,7 @@ class ChatsPage extends StatelessWidget {
     final chatList = Container(
       height: 500.0,
       child: ListView(
-        children: chats.map((chat) => _buildChatTile(chat, context)).toList(),
+        children: null
       ),
     );
 

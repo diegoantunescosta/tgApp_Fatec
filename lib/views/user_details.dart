@@ -11,7 +11,7 @@ class UserDetailsPage extends StatelessWidget {
   const UserDetailsPage({Key key, this.userId}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final User user = users.singleWhere((user) => user.id == userId);
+    final User user = null ;
 
     // final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
@@ -130,7 +130,7 @@ class UserDetailsPage extends StatelessWidget {
                 height: 5.0,
               ),
               Text(
-                "ABOUT ME",
+                "Sobre Mim",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
@@ -141,7 +141,7 @@ class UserDetailsPage extends StatelessWidget {
                 height: 2.0,
               ),
               Text(
-                "My name is ${user.name} and i love meeting new people and making new friends. I love sports, reading, hiking and partying. Don't be reluctant to hit me up.",
+                "Meu nome é ${user.name} e adoro conhecer novas pessoas e fazer novos amigos. Eu amo a natureza,  esportes e um bom livro.",
                 style: TextStyle(
                   color: Colors.black54,
                   fontWeight: FontWeight.w600,
@@ -154,7 +154,7 @@ class UserDetailsPage extends StatelessWidget {
       ),
     );
 
-    final hobbies = Padding(
+    final plantas = Padding(
       padding: EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
       child: Material(
         elevation: 5.0,
@@ -175,20 +175,20 @@ class UserDetailsPage extends StatelessWidget {
                 height: 5.0,
               ),
               Text(
-                "HOBBIES",
+                "Plantações",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
+
                 ),
               ),
               SizedBox(
                 height: 2.0,
               ),
               Wrap(
-                children: userHobbies
-                    .map((hobby) => _buildHobbiesCards(hobby))
-                    .toList(),
+                children: null
+                   ,
               )
             ],
           ),
@@ -205,7 +205,7 @@ class UserDetailsPage extends StatelessWidget {
             userName,
             userLocation,
             aboutUser,
-            hobbies
+            plantas
           ],
         ),
       ),

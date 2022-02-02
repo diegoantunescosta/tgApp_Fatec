@@ -20,18 +20,21 @@ class NotificationsPage extends StatelessWidget {
     );
 
     final image = Image.asset(
+
       AvailableImages.emptyState['assetPath'],
+      height: 150.0,
+      width: 90.0,
     );
 
     final notificationHeader = Container(
-      padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
+      padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
       child: Text(
-        "No New Notification",
+        "Não existe nova notificação",
         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24.0),
       ),
     );
     final notificationText = Text(
-      "You currently do not have any unread notifications.",
+      "No momento, você não tem notificações.",
       style: TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
@@ -43,7 +46,7 @@ class NotificationsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(
-          top: 70.0,
+          top: 50.0,
           left: 30.0,
           right: 30.0,
           bottom: 30.0,

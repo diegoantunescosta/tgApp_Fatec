@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_social/_routing/routes.dart';
+import 'package:flutter_social/utils/api.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,9 +14,49 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final Api = API();
+
+  String _email;
+  String _password;
 
   @override
   Widget build(BuildContext context) {
+
+    void _fail() {
+      // FocusScope.of(context).requestFocus(new FocusNode());
+      _scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text('Falha ao entrar!'),
+        backgroundColor: Colors.blue,
+        duration: Duration(seconds: 4),
+      ));
+    }
+
+    _save(String Token, bool Auth, Map<String, dynamic> user )  async {
+      SharedPreferences.getInstance().then((prefs) {
+        prefs.setString("logged", json.encode(Auth));
+        prefs.setString("token", json.encode(Token));
+        prefs.setString("user", json.encode(user));
+
+      });
+    }
+
+    void _login () async {
+      _formKey.currentState.save();
+      final response = await Api.login(_email, _password);
+      if (response.statusCode == 201){
+        Map<String, dynamic> dados = json.decode(response.body);
+        _save(dados['token'],dados['auth'], dados['user']);
+        print (dados);
+        Navigator.pushNamed(context, homeViewRoute);
+
+      }else {
+        _fail();
+      }
+    }
+
+
+
     // Change Status Bar Color
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: primaryColor),
@@ -22,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Log In.",
+          "Entrar",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -30,19 +73,22 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         Text(
-          "We missed you!",
+          "Olá, tudo bem ?",
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
           ),
         )
       ],
     );
 
     final emailField = TextFormField(
+      onSaved: (data){
+        _email = data;
+      },
       decoration: InputDecoration(
-        labelText: 'Email Address',
+        labelText: 'Email',
         labelStyle: TextStyle(color: Colors.white),
         prefixIcon: Icon(
           LineIcons.envelope,
@@ -61,8 +107,11 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final passwordField = TextFormField(
+      onSaved: (data){
+        _password = data;
+      },
       decoration: InputDecoration(
-        labelText: 'Password',
+        labelText: 'Senha',
         labelStyle: TextStyle(color: Colors.white),
         prefixIcon: Icon(
           LineIcons.lock,
@@ -97,21 +146,25 @@ class _LoginPageState extends State<LoginPage> {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7.0),
-        border: Border.all(color: Colors.white),
+        border: Border.all(color: Colors.green.shade900),
         color: Colors.white,
       ),
       child: RaisedButton(
+
         elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, homeViewRoute),
-        color: Colors.white,
+        // onPressed: () => callAPI(),
+        // onPressed: () => Navigator.pushNamed(context, homeViewRoute),
+        onPressed:() => _login(),
+        color: Colors.green.shade900,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(7.0),
         ),
         child: Text(
-          'SIGN IN',
+          'CONFIRMAR',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 20.0,
+            color: Colors.white,
           ),
         ),
       ),
@@ -123,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
         onTap: () => Navigator.pushNamed(context, resetPasswordViewRoute),
         child: Center(
           child: Text(
-            'Forgot Password?',
+            'Esqueceu a Senha ?',
             style: TextStyle(
               color: Colors.white70,
               fontSize: 18.0,
@@ -142,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'New User?',
+              'Novo Usuário?',
               style: TextStyle(
                 color: Colors.white70,
                 fontSize: 18.0,
@@ -150,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Text(
-              ' Create account',
+              ' Criar Conta',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -163,6 +216,7 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     return Scaffold(
+      key: _scaffoldKey,
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 150.0, left: 30.0, right: 30.0),
@@ -183,4 +237,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+
 }

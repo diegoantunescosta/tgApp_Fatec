@@ -14,7 +14,7 @@ class LandingPage extends StatelessWidget {
 
     final logo = Container(
       height: 100.0,
-      width: 100.0,
+      width: 60.0,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AvailableImages.appLogo,
@@ -36,10 +36,7 @@ class LandingPage extends StatelessWidget {
         Text(
           AppConfig.appTagline,
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-            fontWeight: FontWeight.w500
-          ),
+              color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w500),
         )
       ],
     );
@@ -50,13 +47,13 @@ class LandingPage extends StatelessWidget {
         height: 60.0,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7.0),
-          border: Border.all(color: Colors.white),
-          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(color: Colors.green.shade900),
+          color: Colors.green.shade900,
         ),
         child: Center(
           child: Text(
-            'LOG IN',
+            'ENTRAR',
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 20.0,
@@ -71,22 +68,22 @@ class LandingPage extends StatelessWidget {
       height: 60.0,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7.0),
-        border: Border.all(color: Colors.white),
-        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(color: Colors.green.shade900),
+        color: Colors.green.shade900,
       ),
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () => Navigator.pushNamed(context, registerViewRoute),
-        color: Colors.white,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(7.0),
         ),
         child: Text(
-          'SIGN UP',
+          'INSCREVER-SE',
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20.0,
+            color: Colors.green.shade900,
           ),
         ),
       ),
@@ -109,7 +106,7 @@ class LandingPage extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 70.0),
+              padding: EdgeInsets.only(top: 100.0),
               decoration: BoxDecoration(gradient: primaryGradient),
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -120,9 +117,9 @@ class LandingPage extends StatelessWidget {
             Positioned(
               bottom: 0,
               child: Padding(
-                padding: EdgeInsets.only(left: 10.0),
+                padding: EdgeInsets.only(left: 0.0),
                 child: Container(
-                  height: 300.0,
+                  height: 100.0,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(

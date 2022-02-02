@@ -39,28 +39,28 @@ class _HomePageState extends State<HomePage> {
         BottomNavigationBarItem(
           icon: Icon(Icons.rss_feed),
           title: Text(
-            'Feed',
+            'Inicio',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.comments),
           title: Text(
-            'Chats',
+            'Mensagens',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.bell),
           title: Text(
-            'Notifications',
+            'Notificações',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.user),
           title: Text(
-            'Profile',
+            'Perfil',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         )
