@@ -26,8 +26,7 @@ import 'dart:convert';
         photo: json['imagePath']
           );
       }
-
-    }
+  }
 
 
 

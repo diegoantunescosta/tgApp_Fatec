@@ -170,12 +170,6 @@ class ChatsPage extends StatelessWidget {
           border: Border.all(color: Colors.white, width: 2.0),
           gradient: primaryGradient,
         ),
-        child: Center(
-          child: Text(
-            chat.unreadCount.toString(),
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
       ),
     );
 
@@ -184,27 +178,27 @@ class ChatsPage extends StatelessWidget {
         Navigator.pushNamed(
           context,
           userDetailsViewRoute,
-          arguments: chat.userId,
+          arguments: chat.idUsuario,
         );
       },
       child: Stack(
         children: <Widget>[
           Hero(
-            tag: chat.userImage,
+            //tag: chat.userImage,
             child: Container(
               margin: EdgeInsets.only(right: 8.0, bottom: 10.0),
               height: 70.0,
               width: 70.0,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(chat.userImage),
+                //  image: AssetImage(chat.userImage),
                   fit: BoxFit.cover,
                 ),
                 shape: BoxShape.circle,
               ),
             ),
           ),
-          chat.unreadCount == 0 ? Container() : unreadCount
+     //     chat.unreadCount == 0 ? Container() : unreadCount
         ],
       ),
     );
@@ -215,7 +209,7 @@ class ChatsPage extends StatelessWidget {
           Navigator.pushNamed(
             context,
             chatDetailsViewRoute,
-            arguments: chat.userId,
+            arguments: chat.idUsuario,
           );
         },
         child: Container(
@@ -225,18 +219,8 @@ class ChatsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Hero(
-                tag: chat.userName,
-                child: Text(
-                  chat.userName,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
               Text(
-                chat.message,
+                chat.comentario,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18.0,

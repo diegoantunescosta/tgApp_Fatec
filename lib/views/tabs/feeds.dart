@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/feed.dart';
+import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/widgets/feed_card1.dart';
 import 'package:flutter_social/widgets/feed_card2.dart';
-import 'package:flutter_social/widgets/feed_card3.dart';
+import 'package:flutter_social/utils/api.dart';
 
-class FeedsPage extends StatelessWidget {
+class FeedsPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
+  _FeedsPageState createState() => _FeedsPageState();
+}
+class _FeedsPageState extends State<FeedsPage> {
+  final Api = API();
 
+
+
+  Widget build(BuildContext context) {
+    final Api = API();
     final pageTitle = Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 30.0),
       child: Text(
@@ -21,6 +29,7 @@ class FeedsPage extends StatelessWidget {
     );
 
     return Scaffold(
+
       body: SingleChildScrollView(
         child: Container(
           color: Colors.grey.withOpacity(0.1),
@@ -30,36 +39,37 @@ class FeedsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0, bottom: 30.0),
+                padding: EdgeInsets.only(
+                    top: 30.0, left: 30.0, right: 30.0, bottom: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    // pageTitle,
-                    // FeedCard3(
-                    //     feed: feeds[0]),
-                    // SizedBox(
-                    //   height: 10.0,
-                    // ),
-                    // FeedCard2(
-                    //   feed: feeds[2],
-                    // ),
-                    // SizedBox(
-                    //   height: 10.0,
-                    // ),
-                    // FeedCard3(
-                    //   feed: feeds[3],
-                    // ),
-                    // SizedBox(
-                    //   height: 10.0,
-                    // ),
-                    // FeedCard2(
-                    //   feed: feeds[4],
-                    // ),
-                    // SizedBox(
-                    //   height: 10.0,
-                    // ),
-
-                  ],
+                  // children: <Widget>[
+                  //   pageTitle,
+                  //   FeedCard2(
+                  //       feed: User['id'],
+                  //   ),
+                  //   SizedBox(
+                  //     height: 10.0,
+                  //   ),
+                  //   FeedCard1(
+                  //     feed: User['id'],
+                  //   ),
+                  //   SizedBox(
+                  //     height: 10.0,
+                  //   ),
+                  //   FeedCard2(
+                  //     feed: User['id'],
+                  //   ),
+                  //   SizedBox(
+                  //     height: 10.0,
+                  //   ),
+                  //   FeedCard1(
+                  //     feed: User['id'],
+                  //   ),
+                  //   SizedBox(
+                  //     height: 10.0,
+                  //   ),
+                  // ],
                 ),
               )
             ],
@@ -69,3 +79,4 @@ class FeedsPage extends StatelessWidget {
     );
   }
 }
+
