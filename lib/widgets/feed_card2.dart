@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/_routing/routes.dart';
 import 'package:flutter_social/models/feed.dart';
 
 class FeedCard2 extends StatelessWidget {
@@ -12,7 +11,7 @@ class FeedCard2 extends StatelessWidget {
       right: 0,
       top: 15.0,
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, userDetailsViewRoute,
+        onTap: () => Navigator.pushNamed(context, '/user_details',
             arguments: feed.legenda),
         child: Hero(
           tag: feed.imagePath,

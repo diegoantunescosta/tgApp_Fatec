@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/_routing/routes.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -79,13 +78,14 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         border: Border.all(color: Colors.white),
         color: Colors.white,
       ),
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, landingViewRoute),
-        color: Colors.white,
-        shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(7.0),
-        ),
+      child: ElevatedButton(
+        onPressed: () => Navigator.pushNamed(context, '/landing'),
+        style: ElevatedButton.styleFrom(
+            elevation: 5.0,
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(7.0),
+            ),
+            primary: Colors.white),
         child: Text(
           'RESETAR',
           style: TextStyle(
@@ -99,7 +99,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     final newUser = Padding(
       padding: EdgeInsets.only(top: 50.0),
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, registerViewRoute),
+        onTap: () => Navigator.pushNamed(context, '/register'),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

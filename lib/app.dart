@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/_routing/routes.dart';
-import 'package:flutter_social/_routing/router.dart' as router;
+import 'package:flutter_social/_routing/router.dart';
 import 'package:flutter_social/theme.dart';
 
 class App extends StatelessWidget {
@@ -10,8 +9,8 @@ class App extends StatelessWidget {
       title: 'Me dá uma Plantinha',
       debugShowCheckedModeBanner: false,
       theme: buildThemeData(),
-      onGenerateRoute: router.generateRoute,
-      initialRoute: landingViewRoute,
+      routes: routes,
+      initialRoute: '/landing',
     );
   }
 }

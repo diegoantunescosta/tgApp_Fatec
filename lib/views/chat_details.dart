@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_social/_routing/routes.dart';
 import 'package:flutter_social/models/message.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/widgets/chat_bubble.dart';
@@ -17,8 +15,8 @@ class ChatDetailsPage extends StatelessWidget {
     final deviceWidth = MediaQuery.of(context).size.width;
 
     final userImage = InkWell(
-      onTap: () => Navigator.pushNamed(context, userDetailsViewRoute,
-          arguments: user.id),
+      onTap: () =>
+          Navigator.pushNamed(context, '/user_details', arguments: user.id),
       child: Hero(
         tag: user.photo,
         child: Container(

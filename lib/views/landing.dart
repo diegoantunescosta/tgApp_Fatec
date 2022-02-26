@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/_routing/routes.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:flutter_social/utils/utils.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +41,7 @@ class LandingPage extends StatelessWidget {
     );
 
     final loginBtn = InkWell(
-      onTap: () => Navigator.pushNamed(context, loginViewRoute),
+      onTap: () => Navigator.pushNamed(context, '/login'),
       child: Container(
         height: 60.0,
         width: MediaQuery.of(context).size.width,
@@ -72,12 +71,13 @@ class LandingPage extends StatelessWidget {
         border: Border.all(color: Colors.green.shade900),
         color: Colors.green.shade900,
       ),
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, registerViewRoute),
-        shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(7.0),
-        ),
+      child: ElevatedButton(
+        onPressed: () => Navigator.pushNamed(context, '/register'),
+        style: ElevatedButton.styleFrom(
+            elevation: 2,
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(7.0),
+            )),
         child: Text(
           'INSCREVER-SE',
           style: TextStyle(

@@ -1,11 +1,4 @@
-import 'dart:html';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_social/models/chat.dart';
-import 'package:flutter_social/models/message.dart';
-import 'package:flutter_social/utils/colors.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class API {
   String url = 'http://localhost:3000/';
@@ -17,7 +10,7 @@ class API {
     return response;
   }
 
-  Future<http.Response> Chat(
+  Future<http.Response> chat(
       String message, String userId, String idPost, String idMessage) async {
     Map<String, dynamic> bodyPost = {
       'comentario': message,

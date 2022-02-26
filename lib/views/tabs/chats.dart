@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_social/_routing/routes.dart';
 import 'package:flutter_social/models/chat.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
@@ -58,10 +56,7 @@ class ChatsPage extends StatelessWidget {
 
     final listOfOnlineUsers = Container(
       height: 100.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: null
-      ),
+      child: ListView(scrollDirection: Axis.horizontal, children: null),
     );
 
     final onlineUsers = Container(
@@ -80,9 +75,7 @@ class ChatsPage extends StatelessWidget {
 
     final chatList = Container(
       height: 500.0,
-      child: ListView(
-        children: null
-      ),
+      child: ListView(children: null),
     );
 
     return Scaffold(
@@ -131,7 +124,8 @@ class ChatsPage extends StatelessWidget {
     return Column(
       children: <Widget>[
         InkWell(
-          onTap: () => Navigator.pushNamed(context, chatDetailsViewRoute, arguments: user.id),
+          onTap: () =>
+              Navigator.pushNamed(context, '/chat_details', arguments: user.id),
           child: Stack(
             children: <Widget>[
               Container(
@@ -177,28 +171,30 @@ class ChatsPage extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          userDetailsViewRoute,
+          '/user_details',
           arguments: chat.idUsuario,
         );
       },
       child: Stack(
         children: <Widget>[
           Hero(
-            //tag: chat.userImage,
+            tag: "chat.userImage",
             child: Container(
               margin: EdgeInsets.only(right: 8.0, bottom: 10.0),
               height: 70.0,
               width: 70.0,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                //  image: AssetImage(chat.userImage),
+                  //  image: AssetImage(chat.userImage),
+                  image: NetworkImage(
+                      "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg"),
                   fit: BoxFit.cover,
                 ),
                 shape: BoxShape.circle,
               ),
             ),
           ),
-     //     chat.unreadCount == 0 ? Container() : unreadCount
+          //     chat.unreadCount == 0 ? Container() : unreadCount
         ],
       ),
     );
@@ -208,7 +204,7 @@ class ChatsPage extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            chatDetailsViewRoute,
+            '/chat_details',
             arguments: chat.idUsuario,
           );
         },

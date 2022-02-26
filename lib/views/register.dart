@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/_routing/routes.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -38,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     final pageTitle = Container(
       child: Text(
-        "Cadastro.",
+        "Cadastro",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.black,
@@ -112,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
           elevation: 10.0,
           shadowColor: Colors.white70,
           child: MaterialButton(
-            onPressed: () => Navigator.of(context).pushNamed(homeViewRoute),
+            onPressed: () => Navigator.of(context).pushNamed('/home'),
             child: Text(
               'Criar Conta',
               style: TextStyle(

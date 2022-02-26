@@ -1,6 +1,3 @@
-import 'package:flutter_social/models/user.dart';
-import 'package:flutter_social/utils/utils.dart';
-
 class Feed {
   int idPost;
   String legenda;
@@ -8,17 +5,18 @@ class Feed {
   int idUsuario;
   String nameUser = 'Nome do User';
 
-
-  Feed({this.idPost, this.legenda, this.imagePath, this.idUsuario, this.nameUser});
+  Feed(
+      {this.idPost,
+      this.legenda,
+      this.imagePath,
+      this.idUsuario,
+      this.nameUser});
 
   factory Feed.fromJson(Map<String, dynamic> json) {
     return new Feed(
         idPost: json['idPost'],
         legenda: json['legenda'],
         imagePath: json['imagePath'],
-        idUsuario: json ['idUsuario']
-    );
+        idUsuario: json['idUsuario']);
   }
-
 }
-

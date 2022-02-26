@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
@@ -6,14 +5,12 @@ import 'package:line_icons/line_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-
 class ProfilePage extends StatefulWidget {
   @override
-  _ProfilePageState createState () => _ProfilePageState();
-
+  _ProfilePageState createState() => _ProfilePageState();
 }
-class _ProfilePageState extends State<ProfilePage> {
 
+class _ProfilePageState extends State<ProfilePage> {
   User _userData;
 
   @override
@@ -24,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
         _userData = User.fromJson(json.decode(prefs.getString('user')));
       }
       return _userData;
-    };
+    }
 
     final hr = Divider();
     final userStats = Positioned(
@@ -101,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: <Widget>[
                     // userImage,
                     SizedBox(width: 10.0),
-                     userNameLocation
+                    userNameLocation
                   ],
                 ),
               ),
@@ -126,13 +123,11 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: Column(
             children: <Widget>[
-            //   _buildIconTile(Icons.favorite, Colors.red, 'Likes'),
-            //   hr,
-            //   _buildIconTile(LineIcons.eye, Colors.green, 'Visitors'),
-            //   hr,
+              //   _buildIconTile(Icons.favorite, Colors.red, 'Likes'),
+              //   hr,
+              //   _buildIconTile(LineIcons.eye, Colors.green, 'Visitors'),
+              //   hr,
               _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Grupos'),
-
-
             ],
           ),
         ),
@@ -161,7 +156,8 @@ class _ProfilePageState extends State<ProfilePage> {
               // hr,
               // _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist'),
               // hr,
-              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Configurações'),
+              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6),
+                  'Configurações'),
             ],
           ),
         ),
@@ -173,44 +169,48 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           children: <Widget>[
             Container(
-              width: MediaQuery.of(context).size.width,
-              child: FutureBuilder (
-                future: _getUser(),
-                initialData: null ,
-                builder: (context,snapshot){
-                  switch(snapshot.connectionState){
-                      case  ConnectionState.waiting:
-                      case  ConnectionState.none:
-                        return Center();
-                      default:
-                        if (snapshot.hasError) return Container();
-                        else {
-                          if (snapshot.hasData) return
-                            Column(
-                              children: <Widget>[
-                                Stack(
-                                  children: <Widget>[
-                                    Container(
-                                      height: 350.0,
-                                    ),
-                                    Container(
-                                      height: 250.0,
-                                      decoration: BoxDecoration(gradient: primaryGradient),
-                                    ),
-                                    Positioned(top: 100, right: 0, left: 0, child: userInfo)
-                                  ],
-                                ),
-                                secondCard, thirdCard
-                              ],
-                            );
-                          else return Container();
-                        }
-                  }
-                }
-
-
-              )
-            ),
+                width: MediaQuery.of(context).size.width,
+                child: FutureBuilder(
+                    future: _getUser(),
+                    initialData: null,
+                    builder: (context, snapshot) {
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.waiting:
+                        case ConnectionState.none:
+                          return Center();
+                        default:
+                          if (snapshot.hasError)
+                            return Container();
+                          else {
+                            if (snapshot.hasData)
+                              return Column(
+                                children: <Widget>[
+                                  Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 350.0,
+                                      ),
+                                      Container(
+                                        height: 250.0,
+                                        decoration: BoxDecoration(
+                                            gradient: primaryGradient),
+                                      ),
+                                      Positioned(
+                                          top: 100,
+                                          right: 0,
+                                          left: 0,
+                                          child: userInfo)
+                                    ],
+                                  ),
+                                  secondCard,
+                                  thirdCard
+                                ],
+                              );
+                            else
+                              return Container();
+                          }
+                      }
+                    })),
           ],
         ),
       ),
@@ -242,7 +242,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildIconTile(IconData icon, Color color, String title) {
     return ListTile(
-      title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
+      title: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       leading: Container(
         height: 30.0,
         width: 30.0,
