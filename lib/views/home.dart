@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     final bottomNavBar = BottomNavigationBar(
       onTap: onTabTapped,
       currentIndex: _currentIndex,
@@ -36,33 +35,18 @@ class _HomePageState extends State<HomePage> {
       unselectedItemColor: Colors.grey.withOpacity(0.6),
       elevation: 0.0,
       items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.rss_feed),
-          title: Text(
-            'Inicio',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.rss_feed), label: 'Inicio'),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.comments),
-          title: Text(
-            'Mensagens',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          label: 'Mensagens',
         ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.bell),
-          title: Text(
-            'Notificações',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          label: 'Notificações',
         ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.user),
-          title: Text(
-            'Perfil',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          label: 'Perfil', /* style: TextStyle(fontWeight: FontWeight.bold), */
         )
       ],
     );
