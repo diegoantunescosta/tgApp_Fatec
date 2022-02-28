@@ -1,4 +1,5 @@
 import 'package:flutter_social/views/home.dart';
+import 'package:flutter_social/views/tabs/informationPlant.dart';
 import 'package:flutter_social/views/login.dart';
 import 'package:flutter_social/views/landing.dart';
 import 'package:flutter_social/views/register.dart';
@@ -14,4 +15,5 @@ final routes = {
   '/chat_details': (context) => ChatDetailsPage(),
   '/user_details': (context) => UserDetailsPage(),
   '/reset_password': (context) => ResetPasswordPage(),
+  '/informationPlant': (context) => InformationPlant(),
 };

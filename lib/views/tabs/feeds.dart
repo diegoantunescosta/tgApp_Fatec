@@ -43,7 +43,7 @@ class _FeedsPageState extends State<FeedsPage> {
                   // children: <Widget>[
                   //   pageTitle,
                   //   FeedCard2(
-                  //       feed: User['id'],
+                  //       feed:json['id'],
                   //   ),
                   //   SizedBox(
                   //     height: 10.0,
