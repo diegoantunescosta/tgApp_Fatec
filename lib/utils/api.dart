@@ -7,7 +7,9 @@ class API {
     Map<String, dynamic> bodyPost = {'email': email, 'senha': password};
     http.Response response =
         await http.post(Uri.parse(url + 'user/login'), body: bodyPost);
+    print (response);
     return response;
+
   }
 
   Future<http.Response> chat(
@@ -20,6 +22,7 @@ class API {
     };
     http.Response response =
         await http.post(Uri.parse(url + 'comment'), body: bodyPost);
+    print (response);
     return response;
   }
 

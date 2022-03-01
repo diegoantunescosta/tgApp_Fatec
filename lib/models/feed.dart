@@ -3,7 +3,7 @@ class Feed {
   String legenda;
   String imagePath;
   int idUsuario;
-  String nameUser = 'Nome do User';
+  String nameUser = 'teste';
 
   Feed(
       {this.idPost,

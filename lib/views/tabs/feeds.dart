@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_social/models/feed.dart';
+import 'package:flutter_social/models/feed.dart';
 // import 'package:flutter_social/models/user.dart';
 // import 'package:flutter_social/widgets/feed_card1.dart';
 // import 'package:flutter_social/widgets/feed_card2.dart';
 import 'package:flutter_social/utils/api.dart';
+import 'package:flutter_social/widgets/feed_card1.dart';
+import 'package:flutter_social/widgets/feed_card2.dart';
 
 class FeedsPage extends StatefulWidget {
   @override
@@ -26,6 +28,7 @@ class _FeedsPageState extends State<FeedsPage> {
       ),
     );
 
+    Map<String, dynamic> idPost;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -40,33 +43,24 @@ class _FeedsPageState extends State<FeedsPage> {
                     top: 30.0, left: 30.0, right: 30.0, bottom: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  // children: <Widget>[
-                  //   pageTitle,
-                  //   FeedCard2(
-                  //       feed:json['id'],
-                  //   ),
-                  //   SizedBox(
-                  //     height: 10.0,
-                  //   ),
-                  //   FeedCard1(
-                  //     feed: User['id'],
-                  //   ),
-                  //   SizedBox(
-                  //     height: 10.0,
-                  //   ),
-                  //   FeedCard2(
-                  //     feed: User['id'],
-                  //   ),
-                  //   SizedBox(
-                  //     height: 10.0,
-                  //   ),
-                  //   FeedCard1(
-                  //     feed: User['id'],
-                  //   ),
-                  //   SizedBox(
-                  //     height: 10.0,
-                  //   ),
-                  // ],
+                  children: <Widget>[
+                    pageTitle,
+                    FeedCard2(
+                 //     feed: Feed.fromJson(idPost),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    FeedCard1(
+                   //   feed: Feed.fromJson(idPost),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    FeedCard2(
+                      feed: Feed.fromJson(idPost),
+                    ),
+                  ],
                 ),
               )
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/feed.dart';
+import 'package:flutter_social/utils/utils.dart';
 
 class FeedCard2 extends StatelessWidget {
   final Feed feed;
@@ -13,8 +14,8 @@ class FeedCard2 extends StatelessWidget {
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, '/user_details',
             arguments: feed.legenda),
-        child: Hero(
-          tag: feed.imagePath,
+    //   child: Hero(
+    //    tag: feed.imagePath,
           child: Material(
             elevation: 5.0,
             borderRadius: BorderRadius.circular(14.0),
@@ -24,14 +25,14 @@ class FeedCard2 extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
                 image: DecorationImage(
-                  image: AssetImage(feed.imagePath),
+                  image: AvailableImages.appLogo,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-        ),
-      ),
+  //     ),
+    ),
     );
 
     final userName = Text(
