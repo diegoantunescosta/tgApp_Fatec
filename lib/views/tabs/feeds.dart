@@ -6,15 +6,16 @@ import 'package:flutter_social/models/feed.dart';
 import 'package:flutter_social/utils/api.dart';
 import 'package:flutter_social/widgets/feed_card1.dart';
 import 'package:flutter_social/widgets/feed_card2.dart';
+import 'package:get_it/get_it.dart';
 
 class FeedsPage extends StatefulWidget {
   @override
   _FeedsPageState createState() => _FeedsPageState();
 }
 
-class _FeedsPageState extends State<FeedsPage> {
-  final api = API();
+final api = GetIt.I.get<API>();
 
+class _FeedsPageState extends State<FeedsPage> {
   Widget build(BuildContext context) {
     final pageTitle = Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 30.0),
@@ -28,7 +29,6 @@ class _FeedsPageState extends State<FeedsPage> {
       ),
     );
 
-    Map<String, dynamic> idPost;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -45,21 +45,21 @@ class _FeedsPageState extends State<FeedsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     pageTitle,
-                    FeedCard2(
-                 //     feed: Feed.fromJson(idPost),
-                    ),
+                    // FeedCard2(
+                    //     //     feed: Feed.fromJson(idPost),
+                    //     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    FeedCard1(
-                   //   feed: Feed.fromJson(idPost),
-                    ),
+                    // FeedCard1(
+                    //     //   feed: Feed.fromJson(idPost),
+                    //     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    FeedCard2(
-                      feed: Feed.fromJson(idPost),
-                    ),
+                    // FeedCard2(
+                    //   feed: Feed.fromJson(idPost),
+                    // ),
                   ],
                 ),
               )

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/_routing/router.dart';
 import 'package:flutter_social/theme.dart';
+import 'package:flutter_social/_routing/router.dart';
 
 class App extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: buildThemeData(),
       routes: routes,
-      initialRoute: '/landing',
+      initialRoute: '/splash',
     );
   }
 }

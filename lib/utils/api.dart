@@ -1,15 +1,14 @@
 import 'package:http/http.dart' as http;
 
 class API {
-  static const url = 'http://localhost:3000/';
+  // static const url = 'http://localhost:3000/';
+  static const url = 'http://192.168.56.1:3000/';
 
   Future<http.Response> login(String email, String password) async {
     Map<String, dynamic> bodyPost = {'email': email, 'senha': password};
     http.Response response =
         await http.post(Uri.parse(url + 'user/login'), body: bodyPost);
-    print (response);
     return response;
-
   }
 
   Future<http.Response> chat(
@@ -22,7 +21,7 @@ class API {
     };
     http.Response response =
         await http.post(Uri.parse(url + 'comment'), body: bodyPost);
-    print (response);
+    print(response);
     return response;
   }
 
@@ -32,9 +31,9 @@ class API {
   Future<http.Response> delete(String route) async =>
       await http.delete(Uri.parse(route));
 
-  Future<http.Response> post(String url, Map body, {Map headers}) async {
+  Future<http.Response> post(String route, Map body, {Map headers}) async {
     http.Response response =
-        await http.post(Uri.parse(url), headers: headers, body: body);
+        await http.post(Uri.parse(url + route), headers: headers, body: body);
     return response;
   }
 
