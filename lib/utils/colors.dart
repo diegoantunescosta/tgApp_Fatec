@@ -10,6 +10,7 @@ const secondaryDark = const Color(0xFFFF9F59);
 
 const Color gradientStart = const Color(0xFFFFCA7A);
 const Color gradientEnd = const Color(0xFFFF918D);
+const Color white = const Color (0xFFFFFFFF);
 
 const primaryGradient = const LinearGradient(
   colors: const [gradientStart, gradientEnd],
@@ -25,7 +26,7 @@ const chatBubbleGradient = const LinearGradient(
 );
 
 const chatBubbleGradient2 = const LinearGradient(
-  colors: const [Color(0xFFf4e3e3), Color(0xFFf4e3e3)],
+  colors: const [Color(0xFFFFFFFF), Color(0xFFFFFFFF)],
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
 );
