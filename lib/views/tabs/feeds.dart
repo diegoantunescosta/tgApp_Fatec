@@ -4,15 +4,16 @@ import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/widgets/feed_card1.dart';
 import 'package:flutter_social/widgets/feed_card2.dart';
 import 'package:flutter_social/utils/api.dart';
+import 'package:get_it/get_it.dart';
 
 class FeedsPage extends StatefulWidget {
   @override
   _FeedsPageState createState() => _FeedsPageState();
 }
 
-class _FeedsPageState extends State<FeedsPage> {
-  // final api = API();
+final api = GetIt.I.get<API>();
 
+class _FeedsPageState extends State<FeedsPage> {
   Widget build(BuildContext context) {
     final List<User> users = [
       User(

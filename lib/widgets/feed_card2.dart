@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/post.dart';
+// import 'package:flutter_social/utils/utils.dart';
 
 class FeedCard2 extends StatelessWidget {
   final Post post;
@@ -13,25 +14,26 @@ class FeedCard2 extends StatelessWidget {
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, '/user_details',
             arguments: post.describe),
-        child: Hero(
-          tag: post.image,
-          child: Material(
-            elevation: 5.0,
-            borderRadius: BorderRadius.circular(14.0),
-            child: Container(
-              height: 120.0,
-              width: 120.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14.0),
-                image: DecorationImage(
-                  // image: AssetImage(feed.imagePath),
-                  image: NetworkImage(post.image),
-                  fit: BoxFit.cover,
-                ),
+        // child: Hero(
+        //   tag: post.image,
+        child: Material(
+          elevation: 5.0,
+          borderRadius: BorderRadius.circular(14.0),
+          child: Container(
+            height: 120.0,
+            width: 120.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14.0),
+              image: DecorationImage(
+                // image: AssetImage(feed.imagePath),
+                image: NetworkImage(post.image),
+                // image: AvailableImages.appLogo,
+                fit: BoxFit.cover,
               ),
             ),
           ),
         ),
+        //     ),
       ),
     );
 

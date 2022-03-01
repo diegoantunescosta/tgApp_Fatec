@@ -1,21 +1,20 @@
+import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_social/utils/colors.dart';
+
+import '../stores/register.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
+final register = GetIt.I.get<Register>();
+
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
-  int _genderRadioBtnVal = -1;
-
-  void _handleGenderChange(int value) {
-    setState(() {
-      _genderRadioBtnVal = value;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,24 +72,12 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: EdgeInsets.only(top: 0.0),
       child: Row(
         children: <Widget>[
-          Radio(
-            value: 0,
-            groupValue: _genderRadioBtnVal,
-            onChanged: _handleGenderChange,
-          ),
-          Text("Masculino"),
-          Radio(
-            value: 1,
-            groupValue: _genderRadioBtnVal,
-            onChanged: _handleGenderChange,
-          ),
-          Text("Feminino"),
-          Radio(
-            value: 2,
-            groupValue: _genderRadioBtnVal,
-            onChanged: _handleGenderChange,
-          ),
-          Text("Outro"),
+          _buildSelectSexRadio(0),
+          _buildRadioText("Masculino", 0),
+          _buildSelectSexRadio(1),
+          _buildRadioText("Feminino", 1),
+          _buildSelectSexRadio(2),
+          _buildRadioText("Outro", 2),
         ],
       ),
     );
@@ -171,5 +158,28 @@ class _RegisterPageState extends State<RegisterPage> {
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
     );
+  }
+
+  Widget _buildSelectSexRadio(int sexValue) {
+    return Observer(
+      builder: (_) => Radio(
+        value: sexValue,
+        groupValue: register.genderRadioBtnVal,
+        onChanged: (value) => register.handleGenderChange(value),
+      ),
+    );
+  }
+
+  Widget _buildRadioText(String sexDescription, int sexValue) {
+    return GestureDetector(
+      child: Text(sexDescription),
+      onTap: () => register.handleGenderChange(sexValue),
+    );
+  }
+
+  @override
+  void dispose() {
+    register.handleGenderChange(-1);
+    super.dispose();
   }
 }
