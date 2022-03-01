@@ -1,16 +1,19 @@
-class Chat {
-  int idUsuario;
-  int idPost;
-  int idMessage;
-  String comentario;
+import 'package:flutter_social/models/message.dart';
+import 'package:flutter_social/models/user.dart';
 
-  Chat({this.idUsuario, this.idPost, this.idMessage, this.comentario});
+class Chat {
+  int id;
+  User user;
+  int idMessage;
+  List<Message> messages;
+
+  Chat({this.user, this.id, this.idMessage, this.messages});
 
   factory Chat.fromJson(Map<String, dynamic> json) {
     return new Chat(
-        comentario: json['comentario'],
-        idUsuario: json['idUsuario'],
-        idPost: json['idPost'],
+        messages: json['comentario'],
+        user: json['idUsuario'],
+        id: json['idPost'],
         idMessage: json['idMessage']);
   }
 }

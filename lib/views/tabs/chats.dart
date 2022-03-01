@@ -3,10 +3,129 @@ import 'package:flutter_social/models/chat.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
 
+import '../../models/message.dart';
+
 class ChatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
+
+    final List<User> users = [
+      User(
+          id: 1,
+          name: 'Matt Maxwell',
+          photo:
+              'https://cdns-images.dzcdn.net/images/artist/2a418ab6e0c357bfd680d3f35b45d8ea/500x500.jpg',
+          gender: 'M',
+          age: 27),
+      User(
+          id: 2,
+          name: 'Maria Perez',
+          photo: 'https://www.vagalume.com.br/maria/images/maria.jpg',
+          gender: 'F',
+          age: 24),
+      User(
+          id: 3,
+          name: 'Craig Jordan',
+          photo:
+              'https://conteudo.imguol.com.br/c/entretenimento/c1/2021/09/17/o-ator-daniel-craig-1631904101619_v2_450x337.jpg',
+          gender: 'M',
+          age: 28),
+      User(
+          id: 4,
+          name: 'Charlotte Mckenzie',
+          photo:
+              'https://s2.glbimg.com/zDB-OXv1yf19uZ2GsmYVP1Xa9uc=/e.glbimg.com/og/ed/f/original/2021/05/01/charlotte.jpg',
+          gender: 'F',
+          age: 23),
+      User(
+          id: 5,
+          name: 'Rita Pena',
+          photo:
+              'https://www.ofuxico.com.br/img/upload/noticias/2020/08/16/rita-netflix_383834_36.jpg',
+          gender: 'F',
+          age: 25),
+      User(
+          id: 6,
+          name: 'Robin Mcguire',
+          photo:
+              'https://ogimg.infoglobo.com.br/cultura/25149265-11f-940/FT1086A/760/robin-batman.jpg',
+          gender: 'M',
+          age: 29),
+      User(
+          id: 7,
+          name: 'Angelina Love',
+          photo:
+              'https://observatoriodocinema.uol.com.br/wp-content/uploads/2021/08/angelina-jolie.jpg',
+          gender: 'F',
+          age: 22),
+      User(
+          id: 8,
+          name: 'Louis Diaz',
+          photo:
+              'https://conteudo.imguol.com.br/c/entretenimento/3c/2020/10/01/louis-tomlinson-1601601395427_v2_600x600.jpg',
+          gender: 'M',
+          age: 23),
+      User(
+          id: 9,
+          name: 'Kyle Poole',
+          photo: 'https://www.vagalume.com.br/kyle/images/kyle.jpg',
+          gender: 'M',
+          age: 25),
+      User(
+          id: 10,
+          name: 'Brenda Watkins',
+          photo:
+              'https://upload.wikimedia.org/wikipedia/commons/c/c7/Brenda_Asnicar_2015.png',
+          gender: 'F',
+          age: 26),
+    ];
+
+    List<Message> messages = [
+      Message(
+          id: 1,
+          date: DateTime.now(),
+          user: users[0],
+          read: true,
+          body: "Ei! Como tá indo? 😀"),
+      Message(
+          id: 2,
+          date: DateTime.now(),
+          user: users[9],
+          read: true,
+          body: "Muito obrigado, estou na preparando a muda para amanhã 😍"),
+      Message(
+          id: 3,
+          date: DateTime.now(),
+          user: users[0],
+          read: true,
+          body: "Eu também. Você conseguiu falar com o pessoal do bosque?"),
+      Message(
+          id: 4,
+          date: DateTime.now(),
+          user: users[9],
+          read: true,
+          body: "Precisa confirmar se estará aberto"),
+      Message(
+          id: 5,
+          date: DateTime.now(),
+          user: users[0],
+          read: true,
+          body: "Ou moió o rolê "),
+      Message(
+          id: 6,
+          date: DateTime.now(),
+          user: users[9],
+          read: true,
+          body: "ok, vou dormir"),
+    ];
+
+    List<Chat> chats = [
+      Chat(
+          id: 1,
+          user: users[0],
+          messages: [messages[0], messages[1], messages[2], messages[3]]),
+    ];
 
     final pageTitle = Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 20.0),
@@ -56,7 +175,11 @@ class ChatsPage extends StatelessWidget {
 
     final listOfOnlineUsers = Container(
       height: 100.0,
-      child: ListView(scrollDirection: Axis.horizontal, children: null),
+      child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: chats
+              .map((chat) => _buildUserCard(users[9], chat, context))
+              .toList()),
     );
 
     final onlineUsers = Container(
@@ -75,7 +198,9 @@ class ChatsPage extends StatelessWidget {
 
     final chatList = Container(
       height: 500.0,
-      child: ListView(children: null),
+      child: ListView(
+          children:
+              chats.map((chat) => _buildChatTile(chat, context)).toList()),
     );
 
     return Scaffold(
@@ -105,7 +230,10 @@ class ChatsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildUserCard(User user, BuildContext context) {
+  Widget _buildUserCard(User user, Chat chat, BuildContext context) {
+    print("Usuario");
+    print(user.name);
+    print(user.photo);
     final firstName = user.name.split(" ")[0];
 
     final onlineTag = Positioned(
@@ -121,11 +249,12 @@ class ChatsPage extends StatelessWidget {
         ),
       ),
     );
+
     return Column(
       children: <Widget>[
         InkWell(
-          onTap: () =>
-              Navigator.pushNamed(context, '/chat_details', arguments: user.id),
+          onTap: () => Navigator.pushNamed(context, '/chat_details',
+              arguments: {user: user, chat: chat}),
           child: Stack(
             children: <Widget>[
               Container(
@@ -134,7 +263,8 @@ class ChatsPage extends StatelessWidget {
                 width: 70.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(user.photo),
+                    // image: AssetImage(user.photo),
+                    image: NetworkImage(user.photo),
                     fit: BoxFit.cover,
                   ),
                   shape: BoxShape.circle,
@@ -172,7 +302,7 @@ class ChatsPage extends StatelessWidget {
         Navigator.pushNamed(
           context,
           '/user_details',
-          arguments: chat.idUsuario,
+          arguments: {"user": chat.user},
         );
       },
       child: Stack(
@@ -186,8 +316,7 @@ class ChatsPage extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   //  image: AssetImage(chat.userImage),
-                  image: NetworkImage(
-                      "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg"),
+                  image: NetworkImage(chat.user.photo),
                   fit: BoxFit.cover,
                 ),
                 shape: BoxShape.circle,
@@ -205,7 +334,7 @@ class ChatsPage extends StatelessWidget {
           Navigator.pushNamed(
             context,
             '/chat_details',
-            arguments: chat.idUsuario,
+            arguments: {chat: chat},
           );
         },
         child: Container(
@@ -216,7 +345,7 @@ class ChatsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                chat.comentario,
+                chat.messages.last.body,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18.0,

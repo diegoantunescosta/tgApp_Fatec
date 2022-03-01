@@ -2,26 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
+// import 'package:shared_preferences/shared_preferences.dart';
+// import 'dart:convert';
 
-class ProfilePage extends StatefulWidget {
-  @override
-  _ProfilePageState createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
-  User _userData;
-
+class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Future<User> _getUser() async {
-      final prefs = await SharedPreferences.getInstance();
-      if (prefs.getKeys().contains('user')) {
-        _userData = User.fromJson(json.decode(prefs.getString('user')));
-      }
-      return _userData;
-    }
+    // Future<User> _getUser() async {
+    //   final prefs = await SharedPreferences.getInstance();
+    //   if (prefs.getKeys().contains('user')) {
+    //     _userData = User.fromJson(json.decode(prefs.getString('user')));
+    //   }
+    //   return _userData;
+    // }
+
+    final User user =
+        User(id: 1, name: 'Matt Maxwell', photo: '', gender: 'M', age: 27);
 
     final hr = Divider();
     final userStats = Positioned(
@@ -42,10 +38,11 @@ class _ProfilePageState extends State<ProfilePage> {
       height: 100.0,
       width: 100.0,
       decoration: BoxDecoration(
-        // image: DecorationImage(
-        //   image: null,
-        //   fit: BoxFit.cover,
-        // ),
+        image: DecorationImage(
+          image: NetworkImage(
+              "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg"),
+          fit: BoxFit.cover,
+        ),
         shape: BoxShape.circle,
       ),
     );
@@ -56,7 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            _userData.name,
+            user.name,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w900,
@@ -96,7 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
                 child: Row(
                   children: <Widget>[
-                    // userImage,
+                    userImage,
                     SizedBox(width: 10.0),
                     userNameLocation
                   ],
@@ -169,48 +166,26 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           children: <Widget>[
             Container(
-                width: MediaQuery.of(context).size.width,
-                child: FutureBuilder(
-                    future: _getUser(),
-                    initialData: null,
-                    builder: (context, snapshot) {
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.waiting:
-                        case ConnectionState.none:
-                          return Center();
-                        default:
-                          if (snapshot.hasError)
-                            return Container();
-                          else {
-                            if (snapshot.hasData)
-                              return Column(
-                                children: <Widget>[
-                                  Stack(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 350.0,
-                                      ),
-                                      Container(
-                                        height: 250.0,
-                                        decoration: BoxDecoration(
-                                            gradient: primaryGradient),
-                                      ),
-                                      Positioned(
-                                          top: 100,
-                                          right: 0,
-                                          left: 0,
-                                          child: userInfo)
-                                    ],
-                                  ),
-                                  secondCard,
-                                  thirdCard
-                                ],
-                              );
-                            else
-                              return Container();
-                          }
-                      }
-                    })),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        height: 350.0,
+                      ),
+                      Container(
+                        height: 250.0,
+                        decoration: BoxDecoration(gradient: primaryGradient),
+                      ),
+                      Positioned(top: 100, right: 0, left: 0, child: userInfo)
+                    ],
+                  ),
+                  secondCard,
+                  thirdCard
+                ],
+              ),
+            ),
           ],
         ),
       ),

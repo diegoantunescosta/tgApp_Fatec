@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/message.dart';
+import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
 
-class ChatBubble extends StatelessWidget {
+class ChatBubble extends StatefulWidget {
   final Message message;
 
   const ChatBubble({Key key, this.message}) : super(key: key);
+
+  @override
+  State<ChatBubble> createState() => _ChatBubbleState();
+}
+
+class _ChatBubbleState extends State<ChatBubble> {
   @override
   Widget build(BuildContext context) {
-    final messageBody = message.body;
-    final fromMe = message.fromMe;
+    final User me = User(
+        id: 10,
+        name: 'Brenda Watkins',
+        photo:
+            'https://upload.wikimedia.org/wikipedia/commons/c/c7/Brenda_Asnicar_2015.png',
+        gender: 'F',
+        age: 26);
+    final messageBody = widget.message.body;
+
+    final fromMe = widget.message.user.id == me.id ? false : true;
     return Align(
       alignment: fromMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(

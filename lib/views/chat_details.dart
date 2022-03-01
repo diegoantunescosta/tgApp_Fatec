@@ -1,31 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_social/models/chat.dart';
 import 'package:flutter_social/models/message.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/widgets/chat_bubble.dart';
 
-class ChatDetailsPage extends StatelessWidget {
-  final int userId;
-  const ChatDetailsPage({Key key, this.userId}) : super(key: key);
+class ChatDetailsPage extends StatefulWidget {
+  final User user;
+  final Chat chat;
+  const ChatDetailsPage({this.user, this.chat});
+
+  @override
+  State<ChatDetailsPage> createState() =>
+      _ChatDetailsPageState(user: this.user, chat: this.chat);
+}
+
+class _ChatDetailsPageState extends State<ChatDetailsPage> {
+  final User user;
+  final Chat chat;
+
+  _ChatDetailsPageState({this.user, this.chat});
 
   @override
   Widget build(BuildContext context) {
-    final User user = null;
+    // final User user = null;
 
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
+    print(this.user);
 
     final userImage = InkWell(
-      onTap: () =>
-          Navigator.pushNamed(context, '/user_details', arguments: user.id),
+      onTap: () => Navigator.pushNamed(context, '/user_details',
+          arguments: {user: this.user}),
       child: Hero(
-        tag: user.photo,
+        tag: "user.id",
         child: Container(
           margin: EdgeInsets.only(right: 8.0, bottom: 10.0),
           height: 50.0,
           width: 50.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(user.photo),
+              // image: AssetImage(user.photo),
+              image: NetworkImage(user.photo),
               fit: BoxFit.cover,
             ),
             shape: BoxShape.circle,
@@ -86,11 +101,9 @@ class ChatDetailsPage extends StatelessWidget {
 
     final messageList = ListView.builder(
       scrollDirection: Axis.vertical,
-      itemCount: messages.length,
+      itemCount: chat.messages.length,
       itemBuilder: (BuildContext context, int index) {
-        return ChatBubble(
-          message: messages[index],
-        );
+        return ChatBubble(message: chat.messages[index]);
       },
     );
 

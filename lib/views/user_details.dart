@@ -6,12 +6,12 @@ import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
 
 class UserDetailsPage extends StatelessWidget {
-  final int userId;
+  final User user;
 
-  const UserDetailsPage({Key key, this.userId}) : super(key: key);
+  const UserDetailsPage({Key key, this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final User user = null ;
+    // final User user = null;
 
     // final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
@@ -37,13 +37,14 @@ class UserDetailsPage extends StatelessWidget {
     final userImage = Stack(
       children: <Widget>[
         Hero(
-          tag: user.photo,
+          tag: user.id,
           child: Container(
             height: 350.0,
             width: deviceWidth,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(user.photo),
+                // image: AssetImage(user.photo),
+                image: NetworkImage(user.photo),
                 fit: BoxFit.cover,
               ),
             ),
@@ -180,15 +181,13 @@ class UserDetailsPage extends StatelessWidget {
                   color: Colors.black,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
-
                 ),
               ),
               SizedBox(
                 height: 2.0,
               ),
               Wrap(
-                children: null
-                   ,
+                children: null,
               )
             ],
           ),

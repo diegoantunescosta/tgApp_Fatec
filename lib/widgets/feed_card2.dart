@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social/models/feed.dart';
+import 'package:flutter_social/models/post.dart';
 
 class FeedCard2 extends StatelessWidget {
-  final Feed feed;
+  final Post post;
 
-  const FeedCard2({Key key, this.feed}) : super(key: key);
+  const FeedCard2({Key key, this.post}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final userImage = Positioned(
@@ -12,9 +12,9 @@ class FeedCard2 extends StatelessWidget {
       top: 15.0,
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, '/user_details',
-            arguments: feed.legenda),
+            arguments: post.describe),
         child: Hero(
-          tag: feed.imagePath,
+          tag: post.image,
           child: Material(
             elevation: 5.0,
             borderRadius: BorderRadius.circular(14.0),
@@ -24,7 +24,8 @@ class FeedCard2 extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
                 image: DecorationImage(
-                  image: AssetImage(feed.imagePath),
+                  // image: AssetImage(feed.imagePath),
+                  image: NetworkImage(post.image),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -35,7 +36,7 @@ class FeedCard2 extends StatelessWidget {
     );
 
     final userName = Text(
-      feed.nameUser,
+      post.user.name,
       style: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
@@ -46,7 +47,7 @@ class FeedCard2 extends StatelessWidget {
     final descriptionText = Container(
       height: 80.0,
       child: Text(
-        feed.legenda,
+        post.describe,
         style: TextStyle(
           color: Colors.grey,
           fontWeight: FontWeight.w600,

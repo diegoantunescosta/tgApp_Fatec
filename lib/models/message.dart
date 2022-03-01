@@ -1,15 +1,19 @@
+import 'package:flutter_social/models/user.dart';
+
 class Message {
-  bool fromMe;
+  int id;
+  DateTime date;
+  User user;
   String body;
+  bool read;
 
-  Message(this.body, this.fromMe);
+  Message({this.body, this.user, this.read, this.date, this.id});
+
+  factory Message.fromJson(Map<String, dynamic> json) {
+    return new Message(
+        id: json['idMessage'],
+        body: json['message'],
+        user: json['fromMe'],
+        read: json['read']);
+  }
 }
-
-List<Message> messages = [
-  Message("Ei! Como tá indo? 😀", false),
-  Message("Muito obrigado, estou na preparando a muda para amanhã 😍", true),
-  Message("Eu também. Você conseguiu falar com o pessoal do bosque?", false),
-  Message("Precisa confirmar se estará aberto", false),
-  Message("Ou moió o rolê ", false),
-  Message("ok, vou dormir", true),
-];
