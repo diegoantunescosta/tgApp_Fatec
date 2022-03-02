@@ -86,7 +86,7 @@ class InformationPlant extends StatelessWidget {
                     Accordion(
                         title: 'Geolocalização',
                         content:
-                        'Fusce ex mi, commodo ut bibendum sit amet, faucibus ac felis. Nullam vel accumsan turpis, quis pretium ipsum. Pellentesque tristique, diam at congue viverra, neque dolor suscipit justo, vitae elementum leo sem vel ipsum'),
+                        'Fusce ex mi., commodo ut bibendum sit amet, faucibus ac felis. Nullam vel accumsan turpis, quis pretium ipsum. Pellentesque tristique, diam at congue viverra, neque dolor suscipit justo, vitae elementum leo sem vel ipsum'),
                     Accordion(
                         title: 'Responsável',
                         content:
