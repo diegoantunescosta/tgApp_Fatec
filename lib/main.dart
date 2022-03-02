@@ -1,5 +1,6 @@
 import 'package:flutter_social/stores/register.dart';
 import 'package:flutter_social/utils/api.dart';
+import 'package:flutter_social/views/tabs/informationPlant.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

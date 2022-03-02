@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
 
     @override
     void didChangeDependencies() async {
-      Future.delayed(Duration(seconds: 8)).then((value) {
+      Future.delayed(Duration(seconds: 7)).then((value) {
         Navigator.popAndPushNamed(context, '/landing');
       });
       super.didChangeDependencies();

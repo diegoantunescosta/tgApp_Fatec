@@ -8,6 +8,7 @@ import 'package:flutter_social/views/user_details.dart';
 import 'package:flutter_social/views/chat_details.dart';
 import 'package:flutter_social/views/reset_password.dart';
 
+
 final routes = {
   '/home': (context) => HomePage(),
   '/login': (context) => LoginPage(),
@@ -18,4 +19,5 @@ final routes = {
   '/user_details': (context) => UserDetailsPage(),
   '/reset_password': (context) => ResetPasswordPage(),
   '/informationPlant': (context) => InformationPlant(),
+
 };

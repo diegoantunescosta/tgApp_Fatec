@@ -165,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
     final forgotPassword = Padding(
       padding: EdgeInsets.only(top: 50.0),
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, '/reset_password'),
+        onTap: () => Navigator.pushNamed(context, '/'),
         child: Center(
           child: Text(
             'Esqueceu a Senha ?',

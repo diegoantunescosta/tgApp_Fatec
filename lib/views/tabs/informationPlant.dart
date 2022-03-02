@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
+import '../../utils/accordion.dart';
 import 'package:flutter_social/utils/utils.dart';
 
 
@@ -10,7 +10,6 @@ class InformationPlant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hr = Divider();
 
 
 
@@ -19,7 +18,7 @@ class InformationPlant extends StatelessWidget {
       width: 200.0,
       decoration: BoxDecoration(
         image: DecorationImage(
-         // Imagem da plata Aqui
+          // Imagem da plata Aqui
           image: AvailableImages.appLogo,
         ),
       ),
@@ -36,7 +35,10 @@ class InformationPlant extends StatelessWidget {
             shadowColor: Colors.white,
             child: Container(
               height: 200.0,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 border: Border.all(
@@ -44,20 +46,17 @@ class InformationPlant extends StatelessWidget {
                 ),
                 color: Colors.white,
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: <Widget>[
-                    userImage,
-                    SizedBox(width: 30.0),
-
-                  ],
-                ),
+              // child: Padding(
+              //   padding: const EdgeInsets.only(left: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  userImage,
+                ],
               ),
             ),
           ),
         ),
-
       ],
     );
 
@@ -68,22 +67,36 @@ class InformationPlant extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-          height: 200.0,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Column(
-            children: <Widget>[
-              _buildIconTile(Icons.photo, Colors.red, 'Informações da Planta'),
-              hr,
-              _buildIconTile(LineIcons.map, Colors.green, 'Geolocalização'),
-              hr,
-              _buildIconTile(LineIcons.user, Colors.blue, 'Responsável'),
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
 
+            child: Column(
+                children: <Widget>[
 
-            ],
-          ),
+                  Column(children: const [
+
+                    Accordion(
+                      title: 'Informações da Planta',
+                      content:
+                      'Plantae é o reino da natureza que agrupa as plantas, em um vasto conjunto de organismos eucariotas multicelulares, sem motilidade e predominantemente autotróficos fotossintéticos',
+                    ),
+                    Accordion(
+                        title: 'Geolocalização',
+                        content:
+                        'Fusce ex mi, commodo ut bibendum sit amet, faucibus ac felis. Nullam vel accumsan turpis, quis pretium ipsum. Pellentesque tristique, diam at congue viverra, neque dolor suscipit justo, vitae elementum leo sem vel ipsum'),
+                    Accordion(
+                        title: 'Responsável',
+                        content:
+                        'Fulano de Tal'),
+                  ]
+
+                  ),
+           //   _accordion('', 'content'),
+                ],
+            ),
         ),
       ),
     );
@@ -118,27 +131,12 @@ class InformationPlant extends StatelessWidget {
         ),
       ),
     );
+    }
+
   }
 
 
-  Widget _buildIconTile(IconData icon, Color color, String title) {
-    return ListTile(
-      title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
-      leading: Container(
-        height: 30.0,
-        width: 30.0,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Center(
-          child: Icon(
-            icon,
-            color: Colors.white,
-          ),
-        ),
-      ),
-      trailing: Icon(LineIcons.chevron_circle_right),
-    );
-  }
-}
+
+
+
+

@@ -140,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildFormField(String label, IconData icon) {
     return TextFormField(
-      decoration: InputDecoration(
+        decoration: InputDecoration(
         labelText: label,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
