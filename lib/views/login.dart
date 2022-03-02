@@ -105,19 +105,19 @@ class _LoginPageState extends State<LoginPage> {
         _password = data;
       },
       decoration: InputDecoration(
-        labelText: 'Senha',
-        labelStyle: TextStyle(color: Colors.white),
-        prefixIcon: Icon(
-          LineIcons.lock,
-          color: Colors.white,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
+      labelText: 'Senha',
+      labelStyle: TextStyle(color: Colors.white),
+      prefixIcon: Icon(
+        LineIcons.lock,
+        color: Colors.white,
       ),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+      ),
+    ),
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.white),
       cursorColor: Colors.white,
