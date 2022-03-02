@@ -77,7 +77,6 @@ class InformationPlant extends StatelessWidget {
                 children: <Widget>[
 
                   Column(children: const [
-
                     Accordion(
                       title: 'Informações da Planta',
                       content:
