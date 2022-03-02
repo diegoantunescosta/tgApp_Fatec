@@ -17,8 +17,9 @@ class InformationPlant extends StatelessWidget {
       height: 300.0,
       width: 200.0,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14.0),
         image: DecorationImage(
-          // Imagem da plata Aqui
+                    // Imagem da plata Aqui
           image: AvailableImages.appLogo,
         ),
       ),

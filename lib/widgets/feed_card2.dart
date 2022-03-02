@@ -12,7 +12,7 @@ class FeedCard2 extends StatelessWidget {
       right: 0,
       top: 15.0,
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, '/user_details',
+        onTap: () => Navigator.pushNamed(context, '/informationPlant',
             arguments: post.describe),
         // child: Hero(
         //   tag: post.image,
