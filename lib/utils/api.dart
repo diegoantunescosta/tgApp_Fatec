@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 
 class API {
-  static const url = 'http://localhost:3000/';
-  // static const url = 'http://192.168.56.1:3000/';
+  // static const url = 'http://localhost:3000/';
+  static const url = 'http://192.168.56.1:3000/';
 
   Future<http.Response> login(String email, String password) async {
     Map<String, dynamic> bodyPost = {'email': email, 'senha': password};

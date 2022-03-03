@@ -6,7 +6,6 @@ import 'package:flutter_social/utils/api.dart';
 import 'package:flutter_social/stores/home.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:flutter_social/stores/validate.dart';
-import 'package:flutter_social/stores/register.dart';
 
 void main() {
   GetIt serviceLocator = GetIt.instance;
@@ -14,7 +13,6 @@ void main() {
   serviceLocator.registerSingleton<API>(API());
   serviceLocator.registerSingleton<Home>(Home());
   serviceLocator.registerSingleton<Validate>(Validate());
-  serviceLocator.registerSingleton<Register>(Register());
 
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: primaryDark));

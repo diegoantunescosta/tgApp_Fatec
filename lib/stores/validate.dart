@@ -35,5 +35,12 @@ class Validate {
     return null;
   }
 
-  name() {}
+  String name(String value) {
+    if (value.length < 3) {
+      return "Digite um nome válido";
+    } else if (value.length > 100) {
+      return "Nome maior que o permitido";
+    }
+    return null;
+  }
 }

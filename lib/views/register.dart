@@ -1,18 +1,15 @@
-import 'package:flutter_social/stores/validate.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_social/utils/colors.dart';
-
-import '../stores/register.dart';
+import 'package:flutter_social/stores/validate.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
-final register = GetIt.I.get<Register>();
 final validate = GetIt.I.get<Validate>();
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -70,20 +67,6 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
 
-    final gender = Padding(
-      padding: EdgeInsets.only(top: 0.0),
-      child: Row(
-        children: <Widget>[
-          _buildSelectSexRadio(0),
-          _buildRadioText("Masculino", 0),
-          _buildSelectSexRadio(1),
-          _buildRadioText("Feminino", 1),
-          _buildSelectSexRadio(2),
-          _buildRadioText("Outro", 2),
-        ],
-      ),
-    );
-
     final submitBtn = Padding(
       padding: EdgeInsets.only(top: 30.0),
       child: Container(
@@ -132,8 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: <Widget>[
                     pageTitle,
                     registerForm,
-                    gender,
-                    submitBtn
+                    submitBtn,
                   ],
                 ),
               )
@@ -163,12 +145,7 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor preencha o Campo';
-        }
-        return null;
-      },
+      validator: validate.name,
     );
   }
 
@@ -191,12 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor preencha o Campo';
-        }
-        return null;
-      },
+      validator: validate.email,
     );
   }
 
@@ -248,26 +220,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _buildSelectSexRadio(int sexValue) {
-    return Observer(
-      builder: (_) => Radio(
-        value: sexValue,
-        groupValue: register.genderRadioBtnVal,
-        onChanged: (value) => register.handleGenderChange(value),
-      ),
-    );
-  }
-
-  Widget _buildRadioText(String sexDescription, int sexValue) {
-    return GestureDetector(
-      child: Text(sexDescription),
-      onTap: () => register.handleGenderChange(sexValue),
-    );
-  }
-
   @override
   void dispose() {
-    register.handleGenderChange(-1);
     super.dispose();
   }
 }
