@@ -16,68 +16,58 @@ class ChatsPage extends StatelessWidget {
           name: 'Matt Maxwell',
           photo:
               'https://cdns-images.dzcdn.net/images/artist/2a418ab6e0c357bfd680d3f35b45d8ea/500x500.jpg',
-          gender: 'M',
           age: 27),
       User(
           id: 2,
           name: 'Maria Perez',
           photo: 'https://www.vagalume.com.br/maria/images/maria.jpg',
-          gender: 'F',
           age: 24),
       User(
           id: 3,
           name: 'Craig Jordan',
           photo:
               'https://conteudo.imguol.com.br/c/entretenimento/c1/2021/09/17/o-ator-daniel-craig-1631904101619_v2_450x337.jpg',
-          gender: 'M',
           age: 28),
       User(
           id: 4,
           name: 'Charlotte Mckenzie',
           photo:
               'https://s2.glbimg.com/zDB-OXv1yf19uZ2GsmYVP1Xa9uc=/e.glbimg.com/og/ed/f/original/2021/05/01/charlotte.jpg',
-          gender: 'F',
           age: 23),
       User(
           id: 5,
           name: 'Rita Pena',
           photo:
               'https://www.ofuxico.com.br/img/upload/noticias/2020/08/16/rita-netflix_383834_36.jpg',
-          gender: 'F',
           age: 25),
       User(
           id: 6,
           name: 'Robin Mcguire',
           photo:
               'https://ogimg.infoglobo.com.br/cultura/25149265-11f-940/FT1086A/760/robin-batman.jpg',
-          gender: 'M',
           age: 29),
       User(
           id: 7,
           name: 'Angelina Love',
           photo:
               'https://observatoriodocinema.uol.com.br/wp-content/uploads/2021/08/angelina-jolie.jpg',
-          gender: 'F',
           age: 22),
       User(
           id: 8,
           name: 'Louis Diaz',
           photo:
               'https://conteudo.imguol.com.br/c/entretenimento/3c/2020/10/01/louis-tomlinson-1601601395427_v2_600x600.jpg',
-          gender: 'M',
           age: 23),
       User(
           id: 9,
           name: 'Kyle Poole',
           photo: 'https://www.vagalume.com.br/kyle/images/kyle.jpg',
-          gender: 'M',
           age: 25),
       User(
           id: 10,
           name: 'Brenda Watkins',
           photo:
               'https://upload.wikimedia.org/wikipedia/commons/c/c7/Brenda_Asnicar_2015.png',
-          gender: 'F',
           age: 26),
     ];
 

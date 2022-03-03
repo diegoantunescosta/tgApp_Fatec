@@ -1,18 +1,16 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_social/utils/colors.dart';
-
-import '../stores/register.dart';
+import 'package:flutter_social/stores/validate.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
-final register = GetIt.I.get<Register>();
+final validate = GetIt.I.get<Validate>();
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
@@ -69,20 +67,6 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
 
-    final gender = Padding(
-      padding: EdgeInsets.only(top: 0.0),
-      child: Row(
-        children: <Widget>[
-          _buildSelectSexRadio(0),
-          _buildRadioText("Masculino", 0),
-          _buildSelectSexRadio(1),
-          _buildRadioText("Feminino", 1),
-          _buildSelectSexRadio(2),
-          _buildRadioText("Outro", 2),
-        ],
-      ),
-    );
-
     final submitBtn = Padding(
       padding: EdgeInsets.only(top: 30.0),
       child: Container(
@@ -100,16 +84,17 @@ class _RegisterPageState extends State<RegisterPage> {
           shadowColor: Colors.white70,
           child: MaterialButton(
             onPressed: () {
-
               if (_formKey.currentState.validate()) {
                 Navigator.of(context).pushNamed('/home');
               }
             },
-            child: const Text('Cadastrar',  style: TextStyle(
-              fontWeight: FontWeight.w800,
-              fontSize: 20.0,
-              color: Colors.white,
-            ),
+            child: const Text(
+              'Cadastrar',
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 20.0,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -130,8 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: <Widget>[
                     pageTitle,
                     registerForm,
-                    gender,
-                    submitBtn
+                    submitBtn,
                   ],
                 ),
               )
@@ -161,15 +145,10 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
-
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor preencha o Campo';
-        }
-        return null;
-      },
+      validator: validate.name,
     );
   }
+
   Widget _email(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
@@ -189,15 +168,10 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
-
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor preencha o Campo';
-        }
-        return null;
-      },
+      validator: validate.email,
     );
   }
+
   Widget _password(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
@@ -218,16 +192,7 @@ class _RegisterPageState extends State<RegisterPage> {
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
       obscureText: true,
-      validator: (value) {
-        if (value == null || value.isEmpty ) {
-          return 'Por favor preencha o Campo';
-        }if(value == '123456'){
-          return 'Senha 123456 ? Escolha uma senha mais segura !';
-        }
-
-        return null;
-      },
-
+      validator: validate.password,
     );
   }
 
@@ -251,53 +216,12 @@ class _RegisterPageState extends State<RegisterPage> {
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
       obscureText: true,
-      validator: _validarCelular,
-    );
-
-
-
-  }
-
-  Widget _buildSelectSexRadio(int sexValue) {
-    return Observer(
-      builder: (_) => Radio(
-        value: sexValue,
-        groupValue: register.genderRadioBtnVal,
-        onChanged: (value) => register.handleGenderChange(value),
-
-      ),
-    );
-  }
-
-  Widget _buildRadioText(String sexDescription, int sexValue) {
-    return GestureDetector(
-      child: Text(sexDescription),
-      onTap: () => register.handleGenderChange(sexValue),
+      validator: validate.phone,
     );
   }
 
   @override
   void dispose() {
-    register.handleGenderChange(-1);
     super.dispose();
   }
-
-  String _validarCelular(String value) {
-    String patttern = r'(^[0-9]*$)';
-    RegExp regExp = new RegExp(patttern);
-    if (value.length == 0) {
-      return "Informe o celular";
-    } else if(value.length != 9){
-      return "O celular deve ter 10 dígitos";
-    }else if (!regExp.hasMatch(value)) {
-      return "O número do celular so deve conter dígitos";
-    }else if (value == null || value.isEmpty ) {
-      return 'Por favor preencha o Campo';
-    }
-
-    return null;
-  }
-  }
-
-
-
+}

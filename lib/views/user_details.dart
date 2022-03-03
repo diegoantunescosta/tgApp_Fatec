@@ -79,10 +79,10 @@ class UserDetailsPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Icon(
-                      user.gender == 'M' ? LineIcons.mars : LineIcons.venus,
-                      color: Colors.white,
-                    ),
+                    // Icon(
+                    //   user.gender == 'M' ? LineIcons.mars : LineIcons.venus,
+                    //   color: Colors.white,
+                    // ),
                     Text(
                       user.age.toString(),
                       style: TextStyle(
@@ -98,17 +98,17 @@ class UserDetailsPage extends StatelessWidget {
           ],
         ));
 
-    final userLocation = Container(
-      padding: EdgeInsets.only(left: 20.0, right: 20.0),
-      child: Text(
-        user.location,
-        style: TextStyle(
-          fontSize: 18.0,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey.withOpacity(0.8),
-        ),
-      ),
-    );
+    // final userLocation = Container(
+    //   padding: EdgeInsets.only(left: 20.0, right: 20.0),
+    //   child: Text(
+    //     user.location,
+    //     style: TextStyle(
+    //       fontSize: 18.0,
+    //       fontWeight: FontWeight.bold,
+    //       color: Colors.grey.withOpacity(0.8),
+    //     ),
+    //   ),
+    // );
 
     final aboutUser = Padding(
       padding: EdgeInsets.all(20.0),
@@ -202,7 +202,7 @@ class UserDetailsPage extends StatelessWidget {
           children: <Widget>[
             userImage,
             userName,
-            userLocation,
+            // userLocation,
             aboutUser,
             plantas
           ],
