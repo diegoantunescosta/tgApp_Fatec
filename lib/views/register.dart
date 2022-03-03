@@ -58,10 +58,17 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _email('Endereço de Email', LineIcons.envelope),
             formFieldSpacing,
-            _phone('Endereço', LineIcons.map),
+            _endereco('Pais', LineIcons.map),
+            formFieldSpacing,
+            _endereco('Estado', LineIcons.map),
+            formFieldSpacing,
+            _endereco('Cidade', LineIcons.map),
+            formFieldSpacing,
+            _endereco('Endereço', LineIcons.map),
             formFieldSpacing,
             _password('Senha', LineIcons.lock),
             formFieldSpacing,
+
           ],
         ),
       ),
@@ -217,6 +224,30 @@ class _RegisterPageState extends State<RegisterPage> {
       cursorColor: Colors.black,
       obscureText: true,
       validator: validate.phone,
+    );
+  }
+
+  Widget _endereco(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+      obscureText: true,
+      validator: validate.name,
     );
   }
 
