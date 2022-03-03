@@ -20,7 +20,6 @@ class _ChatBubbleState extends State<ChatBubble> {
         name: 'Brenda Watkins',
         photo:
             'https://upload.wikimedia.org/wikipedia/commons/c/c7/Brenda_Asnicar_2015.png',
-        gender: 'F',
         age: 26);
     final messageBody = widget.message.body;
 
