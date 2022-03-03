@@ -16,9 +16,9 @@ class ProfilePage extends StatelessWidget {
     //   return _userData;
     // }
 
-    final User user = User(id: 1, name: 'Matt Maxwell', photo: '', age: 27);
+    final User user = User(id: 1, name: 'Matt Maxwell', photo: '');
 
-    final hr = Divider();
+    // final hr = Divider();
     final userStats = Positioned(
       bottom: 10.0,
       left: 40.0,
