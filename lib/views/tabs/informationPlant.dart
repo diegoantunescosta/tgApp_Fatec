@@ -1,30 +1,22 @@
+import '../../utils/accordion.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_social/utils/colors.dart';
-import 'package:line_icons/line_icons.dart';
-import '../../utils/accordion.dart';
 import 'package:flutter_social/utils/utils.dart';
 
-
 class InformationPlant extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-
-
-
     final userImage = Container(
       height: 300.0,
       width: 200.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.0),
         image: DecorationImage(
-                    // Imagem da plata Aqui
+          // Imagem da plata Aqui
           image: AvailableImages.appLogo,
         ),
       ),
     );
-
 
     final info = Stack(
       children: <Widget>[
@@ -36,10 +28,7 @@ class InformationPlant extends StatelessWidget {
             shadowColor: Colors.white,
             child: Container(
               height: 200.0,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 border: Border.all(
@@ -68,40 +57,31 @@ class InformationPlant extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         shadowColor: Colors.white,
         child: Container(
-            height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-
-            child: Column(
-                children: <Widget>[
-
-                  Column(children: const [
-                    Accordion(
-                      title: 'Informações da Planta',
-                      content:
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Column(
+            children: <Widget>[
+              Column(children: const [
+                Accordion(
+                  title: 'Informações da Planta',
+                  content:
                       'Plantae é o reino da natureza que agrupa as plantas, em um vasto conjunto de organismos eucariotas multicelulares, sem motilidade e predominantemente autotróficos fotossintéticos',
-                    ),
-                    Accordion(
-                        title: 'Geolocalização',
-                        content:
+                ),
+                Accordion(
+                    title: 'Geolocalização',
+                    content:
                         'Fusce ex mi., commodo ut bibendum sit amet, faucibus ac felis. Nullam vel accumsan turpis, quis pretium ipsum. Pellentesque tristique, diam at congue viverra, neque dolor suscipit justo, vitae elementum leo sem vel ipsum'),
-                    Accordion(
-                        title: 'Responsável',
-                        content:
-                        'Fulano de Tal'),
-                  ]
-
-                  ),
-           //   _accordion('', 'content'),
-                ],
-            ),
+                Accordion(title: 'Responsável', content: 'Fulano de Tal'),
+              ]),
+              //   _accordion('', 'content'),
+            ],
+          ),
         ),
       ),
     );
-
-
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -131,12 +111,5 @@ class InformationPlant extends StatelessWidget {
         ),
       ),
     );
-    }
-
   }
-
-
-
-
-
-
+}

@@ -16,11 +16,11 @@ class _ChatBubbleState extends State<ChatBubble> {
   @override
   Widget build(BuildContext context) {
     final User me = User(
-        id: 10,
-        name: 'Brenda Watkins',
-        photo:
-            'https://upload.wikimedia.org/wikipedia/commons/c/c7/Brenda_Asnicar_2015.png',
-        age: 26);
+      id: 10,
+      name: 'Brenda Watkins',
+      photo:
+          'https://upload.wikimedia.org/wikipedia/commons/c/c7/Brenda_Asnicar_2015.png',
+    );
     final messageBody = widget.message.body;
 
     final fromMe = widget.message.user.id == me.id ? false : true;

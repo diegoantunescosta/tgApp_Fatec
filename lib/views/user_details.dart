@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
@@ -83,14 +81,14 @@ class UserDetailsPage extends StatelessWidget {
                     //   user.gender == 'M' ? LineIcons.mars : LineIcons.venus,
                     //   color: Colors.white,
                     // ),
-                    Text(
-                      user.age.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      ),
-                    )
+                    // Text(
+                    //   user.age.toString(),
+                    //   style: TextStyle(
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.white,
+                    //     fontSize: 18.0,
+                    //   ),
+                    // )
                   ],
                 ),
               ),
@@ -211,27 +209,27 @@ class UserDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHobbiesCards(String name) {
-    return Container(
-      padding: EdgeInsets.only(
-        left: 10.0,
-        right: 10.0,
-      ),
-      margin: EdgeInsets.only(right: 5.0, bottom: 3.0),
-      height: 30.0,
-      constraints: BoxConstraints(maxWidth: 80.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.0),
-        color: Colors.transparent,
-        border: Border.all(color: Colors.grey, width: 2.0),
-      ),
-      child: Center(
-          child: Text(
-        name,
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-        ),
-      )),
-    );
-  }
+  // Widget _buildHobbiesCards(String name) {
+  //   return Container(
+  //     padding: EdgeInsets.only(
+  //       left: 10.0,
+  //       right: 10.0,
+  //     ),
+  //     margin: EdgeInsets.only(right: 5.0, bottom: 3.0),
+  //     height: 30.0,
+  //     constraints: BoxConstraints(maxWidth: 80.0),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(12.0),
+  //       color: Colors.transparent,
+  //       border: Border.all(color: Colors.grey, width: 2.0),
+  //     ),
+  //     child: Center(
+  //         child: Text(
+  //       name,
+  //       style: TextStyle(
+  //         fontWeight: FontWeight.w600,
+  //       ),
+  //     )),
+  //   );
+  // }
 }

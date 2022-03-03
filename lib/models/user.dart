@@ -1,15 +1,33 @@
 class User {
   int id;
+  int idAddress;
   String name;
   String photo;
-  String location;
-  String gender;
-  int age;
+  String email;
+  String createdAt;
+  String updatedAt;
 
-  User({this.id, this.name, this.photo, this.gender, this.age});
+  User({
+    this.id,
+    this.name,
+    this.email,
+    this.photo,
+    this.createdAt,
+    this.updatedAt,
+    this.idAddress,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) {
+    json = json['user'];
+
     return new User(
-        id: json['id'], name: json['nome'], photo: json['imagePath']);
+      id: json['id'],
+      name: json['nome'],
+      email: json['email'],
+      photo: json['imagePath'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+      idAddress: json['idEndereco'],
+    );
   }
 }

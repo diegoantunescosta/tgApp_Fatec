@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:get_it/get_it.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:flutter_social/utils/api.dart';
 import 'package:flutter_social/utils/colors.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,10 +12,11 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
+final api = GetIt.I.get<API>();
+
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final api = API();
 
   String _email;
   String _password;
@@ -23,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     void _fail() {
       // FocusScope.of(context).requestFocus(new FocusNode());
-      _scaffoldKey.currentState.showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Falha ao entrar!'),
         backgroundColor: Colors.blue,
         duration: Duration(seconds: 4),
@@ -105,19 +107,19 @@ class _LoginPageState extends State<LoginPage> {
         _password = data;
       },
       decoration: InputDecoration(
-      labelText: 'Senha',
-      labelStyle: TextStyle(color: Colors.white),
-      prefixIcon: Icon(
-        LineIcons.lock,
-        color: Colors.white,
+        labelText: 'Senha',
+        labelStyle: TextStyle(color: Colors.white),
+        prefixIcon: Icon(
+          LineIcons.lock,
+          color: Colors.white,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
       ),
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
-      ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
-      ),
-    ),
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.white),
       cursorColor: Colors.white,

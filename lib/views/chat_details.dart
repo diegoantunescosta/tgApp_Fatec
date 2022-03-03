@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/chat.dart';
-import 'package:flutter_social/models/message.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/widgets/chat_bubble.dart';
 
