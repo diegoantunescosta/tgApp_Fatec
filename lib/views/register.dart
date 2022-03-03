@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:flutter_social/stores/validate.dart';
 
@@ -12,8 +11,10 @@ class RegisterPage extends StatefulWidget {
 
 final validate = GetIt.I.get<Validate>();
 
+
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +45,43 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
 
+    showAlertDialog1(BuildContext context)
+    {
+      // configura o button
+      Widget okButton = FlatButton(
+        child: Text("OK"),
+        onPressed: () { },
+      );
+      // configura o  AlertDialog
+      AlertDialog alerta = AlertDialog(
+        title: Text("teste"),
+        content: Text("teste."),
+        actions: [
+          okButton,
+        ],
+      );
+      // exibe o dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alerta;
+        },
+      );
+
+    }
+
+    Widget _image(BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: RaisedButton(
+          child: Text('Exibir Alerta'),
+          onPressed: () {
+            showAlertDialog1(context);
+          },
+        ),
+      );
+    }
+
     final formFieldSpacing = SizedBox(
       height: 30.0,
     );
@@ -68,11 +106,16 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _password('Senha', LineIcons.lock),
             formFieldSpacing,
+            _image(context),
 
           ],
         ),
       ),
     );
+
+
+
+
 
     final submitBtn = Padding(
       padding: EdgeInsets.only(top: 30.0),
