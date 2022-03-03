@@ -1,3 +1,4 @@
+
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
@@ -59,9 +60,9 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _buildFormField('Endereço de Email', LineIcons.envelope),
             formFieldSpacing,
-            _buildFormField('Numero de Telefone', LineIcons.mobile_phone),
+            _phone('Numero de Telefone', LineIcons.mobile_phone),
             formFieldSpacing,
-            _buildFormField('Senha', LineIcons.lock),
+            _password('Senha', LineIcons.lock),
             formFieldSpacing,
           ],
         ),
@@ -160,13 +161,73 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
+
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Por favor preencha o sua senha';
+          return 'Por favor preencha o Campo';
         }
         return null;
       },
     );
+  }
+  Widget _password(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+      obscureText: true,
+      validator: (value) {
+        if (value == null || value.isEmpty ) {
+          return 'Por favor preencha o Campo';
+        }if(value == '123456'){
+          return 'Senha 123456 ? Escolha uma senha mais segura !';
+        }
+
+        return null;
+      },
+
+    );
+  }
+
+  Widget _phone(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+      obscureText: true,
+      validator: _validarCelular,
+    );
+
+
+
   }
 
   Widget _buildSelectSexRadio(int sexValue) {
@@ -192,4 +253,22 @@ class _RegisterPageState extends State<RegisterPage> {
     register.handleGenderChange(-1);
     super.dispose();
   }
-}
+
+  String _validarCelular(String value) {
+    String patttern = r'(^[0-9]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if (value.length == 0) {
+      return "Informe o celular";
+    } else if(value.length != 10){
+      return "O celular deve ter 10 dígitos";
+    }else if (!regExp.hasMatch(value)) {
+      return "O número do celular so deve conter dígitos";
+    }else if (value == null || value.isEmpty ) {
+      return 'Por favor preencha o Campo';
+    }
+
+    return null;
+  }
+  }
+
+

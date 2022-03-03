@@ -1,5 +1,4 @@
 import 'package:flutter_social/views/home.dart';
-import 'package:flutter_social/views/registro.dart';
 import 'package:flutter_social/views/splash.dart';
 import 'package:flutter_social/views/tabs/informationPlant.dart';
 import 'package:flutter_social/views/login.dart';
