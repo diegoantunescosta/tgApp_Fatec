@@ -56,9 +56,9 @@ class _RegisterPageState extends State<RegisterPage> {
         key: _formKey,
         child: Column(
           children: <Widget>[
-            _buildFormField('Nome', LineIcons.user),
+            _name('Nome', LineIcons.user),
             formFieldSpacing,
-            _buildFormField('Endereço de Email', LineIcons.envelope),
+            _email('Endereço de Email', LineIcons.envelope),
             formFieldSpacing,
             _phone('Numero de Telefone', LineIcons.mobile_phone),
             formFieldSpacing,
@@ -142,7 +142,35 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _buildFormField(String label, IconData icon) {
+  Widget _name(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Por favor preencha o Campo';
+        }
+        return null;
+      },
+    );
+  }
+  Widget _email(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
         labelText: label,
@@ -259,7 +287,7 @@ class _RegisterPageState extends State<RegisterPage> {
     RegExp regExp = new RegExp(patttern);
     if (value.length == 0) {
       return "Informe o celular";
-    } else if(value.length != 10){
+    } else if(value.length != 9){
       return "O celular deve ter 10 dígitos";
     }else if (!regExp.hasMatch(value)) {
       return "O número do celular so deve conter dígitos";
@@ -270,5 +298,6 @@ class _RegisterPageState extends State<RegisterPage> {
     return null;
   }
   }
+
 
 
