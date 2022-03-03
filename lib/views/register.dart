@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _email('Endereço de Email', LineIcons.envelope),
             formFieldSpacing,
-            _phone('Numero de Telefone', LineIcons.mobile_phone),
+            _phone('Endereço', LineIcons.map),
             formFieldSpacing,
             _password('Senha', LineIcons.lock),
             formFieldSpacing,
