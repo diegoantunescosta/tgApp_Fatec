@@ -21,6 +21,7 @@ dependencies:
     sdk: flutter
   http: ^0.13.4
   line_icons: ^0.2.0
+  http_parser: ^4.0.0
   shared_preferences: ^2.0.12
   # Mobx e getIt
   mobx: ^2.0.6+1
