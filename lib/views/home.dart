@@ -8,7 +8,7 @@ import 'package:flutter_social/views/tabs/chats.dart';
 import 'package:flutter_social/views/tabs/feeds.dart';
 import 'package:flutter_social/views/tabs/profile.dart';
 import 'package:flutter_social/views/tabs/notifications.dart';
-import 'package:flutter_social/views/tabs/informationPlant.dart';
+import 'package:flutter_social/views/tabs/information_plant.dart';
 
 class HomePage extends StatefulWidget {
   @override

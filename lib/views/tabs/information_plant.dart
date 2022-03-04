@@ -7,7 +7,7 @@ class InformationPlant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userImage = Container(
+    final Image = Container(
       height: 300.0,
       width: 200.0,
       decoration: BoxDecoration(
@@ -42,7 +42,7 @@ class InformationPlant extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  userImage,
+                  Image,
                 ],
               ),
             ),

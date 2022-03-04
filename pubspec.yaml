@@ -67,6 +67,7 @@ flutter:
    - lib/assets/images/empty.png
    - lib/assets/images/post_banner.jpg
    - lib/assets/images/loading.gif
+   - lib/assets/images/user.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

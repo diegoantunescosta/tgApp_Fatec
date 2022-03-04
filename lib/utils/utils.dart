@@ -73,4 +73,5 @@ class AvailableImages {
   static const homePage = const AssetImage('lib/assets/images/home_page.png');
   static const appLogo = const AssetImage('lib/assets/images/logo.png');
   static const loading = const AssetImage('lib/assets/images/loading.gif');
+  static const user = const AssetImage('lib/assets/images/user.jpg');
 }
