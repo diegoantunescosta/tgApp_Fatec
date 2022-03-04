@@ -57,11 +57,11 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _email('Endereço de Email', LineIcons.envelope),
             formFieldSpacing,
-            _endereco('Pais', LineIcons.map),
+            _Pais('Pais', LineIcons.map),
             formFieldSpacing,
-            _endereco('Estado', LineIcons.map),
+            _Estado('Estado', LineIcons.map),
             formFieldSpacing,
-            _endereco('Cidade', LineIcons.map),
+            _Cidade('Cidade', LineIcons.map),
             formFieldSpacing,
             _endereco('Endereço', LineIcons.map),
             formFieldSpacing,
@@ -200,6 +200,74 @@ class _RegisterPageState extends State<RegisterPage> {
       validator: validate.password,
     );
   }
+  Widget _Pais(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+      validator: validate.name,
+    );
+  }
+
+  Widget _Estado(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+      validator: validate.name,
+    );
+  }
+
+  Widget _Cidade(String label, IconData icon) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.black38,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black38),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange),
+        ),
+      ),
+      keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
+      cursorColor: Colors.black,
+      validator: validate.name,
+    );
+  }
 
   Widget _endereco(String label, IconData icon) {
     return TextFormField(
@@ -223,6 +291,8 @@ class _RegisterPageState extends State<RegisterPage> {
       validator: validate.name,
     );
   }
+
+
 
   @override
   void dispose() {
