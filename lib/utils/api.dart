@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 
 class API {
   // static const url = 'http://localhost:3000/';
@@ -40,6 +41,29 @@ class API {
   Future<http.Response> put(String route, Map headers, Map body) async {
     http.Response response =
         await http.put(Uri.parse(url + route), headers: headers, body: body);
+    return response;
+  }
+
+  Future<http.Response> uploadSingleFile(
+      String method,
+      String route,
+      Map body,
+      String fieldName,
+      String fileType,
+      String fileSubtype,
+      String path,
+      String fileName,
+      {Map headers}) async {
+    var request = http.MultipartRequest(method, Uri.parse(url + route));
+    var file = await http.MultipartFile.fromPath(fieldName, path,
+        filename: fileName, contentType: MediaType(fileType, fileSubtype));
+    request..files.add(file);
+    body.forEach((key, value) {
+      request..fields[key] = value;
+    });
+    if (headers.isNotEmpty) request..headers.addAll(headers);
+    var requestStream = await request.send();
+    http.Response response = await http.Response.fromStream(requestStream);
     return response;
   }
 }
