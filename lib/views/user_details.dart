@@ -18,6 +18,8 @@ class UserDetailsPage extends StatelessWidget {
       top: 50.0,
       left: 20.0,
       child: Container(
+
+
         height: 35.0,
         width: 35.0,
         decoration: BoxDecoration(
@@ -29,7 +31,8 @@ class UserDetailsPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
           iconSize: 20.0,
         ),
-      ),
+        ),
+
     );
 
     final userImage = Stack(

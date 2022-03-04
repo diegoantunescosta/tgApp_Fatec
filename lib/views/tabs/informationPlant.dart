@@ -4,6 +4,7 @@ import 'package:flutter_social/utils/colors.dart';
 import 'package:flutter_social/utils/utils.dart';
 
 class InformationPlant extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final userImage = Container(

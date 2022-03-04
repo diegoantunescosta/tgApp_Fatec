@@ -16,7 +16,7 @@ class Validate {
 
   String password(value) {
     if (value == null || value.isEmpty) {
-      return 'Por favor preencha o Campo';
+      return 'Por favor preencha o Campo Corretamente';
     }
     if (value == '123456') {
       return 'Senha 123456 ? Escolha uma senha mais segura !';
@@ -37,7 +37,7 @@ class Validate {
 
   String name(String value) {
     if (value.length < 3) {
-      return "Digite um nome válido";
+      return "'Por favor preencha o Campo Corretamente";
     } else if (value.length > 100) {
       return "Nome maior que o permitido";
     }

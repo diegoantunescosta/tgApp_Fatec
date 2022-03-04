@@ -11,10 +11,8 @@ class RegisterPage extends StatefulWidget {
 
 final validate = GetIt.I.get<Validate>();
 
-
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,43 +43,6 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
 
-    showAlertDialog1(BuildContext context)
-    {
-      // configura o button
-      Widget okButton = FlatButton(
-        child: Text("OK"),
-        onPressed: () { },
-      );
-      // configura o  AlertDialog
-      AlertDialog alerta = AlertDialog(
-        title: Text("teste"),
-        content: Text("teste."),
-        actions: [
-          okButton,
-        ],
-      );
-      // exibe o dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return alerta;
-        },
-      );
-
-    }
-
-    Widget _image(BuildContext context) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: RaisedButton(
-          child: Text('Exibir Alerta'),
-          onPressed: () {
-            showAlertDialog1(context);
-          },
-        ),
-      );
-    }
-
     final formFieldSpacing = SizedBox(
       height: 30.0,
     );
@@ -106,16 +67,10 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _password('Senha', LineIcons.lock),
             formFieldSpacing,
-            _image(context),
-
           ],
         ),
       ),
     );
-
-
-
-
 
     final submitBtn = Padding(
       padding: EdgeInsets.only(top: 30.0),
@@ -246,30 +201,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _phone(String label, IconData icon) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: Colors.black),
-        prefixIcon: Icon(
-          icon,
-          color: Colors.black38,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange),
-        ),
-      ),
-      keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.black),
-      cursorColor: Colors.black,
-      obscureText: true,
-      validator: validate.phone,
-    );
-  }
-
   Widget _endereco(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
@@ -289,7 +220,6 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
-      obscureText: true,
       validator: validate.name,
     );
   }
