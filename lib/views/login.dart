@@ -1,18 +1,16 @@
-import 'dart:convert';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:flutter_social/utils/api.dart';
+import 'package:flutter_social/stores/user.dart';
 import 'package:flutter_social/utils/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-final api = GetIt.I.get<API>();
+final user = GetIt.I.get<User>();
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
@@ -24,7 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     void _fail() {
-      // FocusScope.of(context).requestFocus(new FocusNode());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Falha ao entrar!'),
         backgroundColor: Colors.blue,
@@ -32,25 +29,10 @@ class _LoginPageState extends State<LoginPage> {
       ));
     }
 
-    _save(String token, bool auth, Map<String, dynamic> user) async {
-      SharedPreferences.getInstance().then((prefs) {
-        prefs.setString("logged", json.encode(auth));
-        prefs.setString("token", json.encode(token));
-        prefs.setString("user", json.encode(user));
-      });
-    }
-
     void _login() async {
       _formKey.currentState.save();
-      final response = await api.login(_email, _password);
-      if (response.statusCode == 201) {
-        Map<String, dynamic> dados = json.decode(response.body);
-        _save(dados['token'], dados['auth'], dados['user']);
-        print(dados);
-        Navigator.pushNamed(context, '/home');
-      } else {
-        _fail();
-      }
+      final response = await user.login(_email, _password);
+      (response) ? Navigator.pushNamed(context, '/home') : _fail();
     }
 
     // Change Status Bar Color

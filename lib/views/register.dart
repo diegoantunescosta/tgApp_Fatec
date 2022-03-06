@@ -57,11 +57,11 @@ class _RegisterPageState extends State<RegisterPage> {
             formFieldSpacing,
             _email('Endereço de Email', LineIcons.envelope),
             formFieldSpacing,
-            _Pais('Pais', LineIcons.map),
+            _pais('Pais', LineIcons.map),
             formFieldSpacing,
-            _Estado('Estado', LineIcons.map),
+            _estado('Estado', LineIcons.map),
             formFieldSpacing,
-            _Cidade('Cidade', LineIcons.map),
+            _cidade('Cidade', LineIcons.map),
             formFieldSpacing,
             _endereco('Endereço', LineIcons.map),
             formFieldSpacing,
@@ -200,7 +200,8 @@ class _RegisterPageState extends State<RegisterPage> {
       validator: validate.password,
     );
   }
-  Widget _Pais(String label, IconData icon) {
+
+  Widget _pais(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
         labelText: label,
@@ -223,7 +224,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _Estado(String label, IconData icon) {
+  Widget _estado(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
         labelText: label,
@@ -246,7 +247,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _Cidade(String label, IconData icon) {
+  Widget _cidade(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
         labelText: label,
@@ -291,8 +292,6 @@ class _RegisterPageState extends State<RegisterPage> {
       validator: validate.name,
     );
   }
-
-
 
   @override
   void dispose() {

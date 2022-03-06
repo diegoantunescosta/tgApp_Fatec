@@ -4,10 +4,9 @@ import 'package:flutter_social/utils/colors.dart';
 import 'package:flutter_social/utils/utils.dart';
 
 class InformationPlant extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final Image = Container(
+    final image = Container(
       height: 300.0,
       width: 200.0,
       decoration: BoxDecoration(
@@ -42,7 +41,7 @@ class InformationPlant extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Image,
+                  image,
                 ],
               ),
             ),

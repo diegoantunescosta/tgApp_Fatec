@@ -8,14 +8,6 @@ import 'package:line_icons/line_icons.dart';
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Future<User> _getUser() async {
-    //   final prefs = await SharedPreferences.getInstance();
-    //   if (prefs.getKeys().contains('user')) {
-    //     _userData = User.fromJson(json.decode(prefs.getString('user')));
-    //   }
-    //   return _userData;
-    // }
-
     final User user = User(id: 1, name: 'Matt Maxwell', photo: '');
 
     // final hr = Divider();

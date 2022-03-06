@@ -16,8 +16,8 @@ class CameraButtonWidget extends StatelessWidget {
     final MediaSource source = ModalRoute.of(context).settings.arguments;
 
     final getMedia = source == MediaSource.image
-        ? ImagePicker().getImage
-        : ImagePicker().getVideo;
+        ? ImagePicker().pickImage
+        : ImagePicker().pickVideo;
 
     final media = await getMedia(source: ImageSource.camera);
     final file = File(media.path);

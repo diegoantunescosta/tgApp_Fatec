@@ -1,15 +1,15 @@
 import 'package:flutter_social/views/home.dart';
 import 'package:flutter_social/views/photo.dart';
-import 'package:flutter_social/views/splash.dart';
-import 'package:flutter_social/views/tabs/information_plant.dart';
 import 'package:flutter_social/views/login.dart';
+import 'package:flutter_social/views/splash.dart';
 import 'package:flutter_social/views/landing.dart';
 import 'package:flutter_social/views/register.dart';
-import 'package:flutter_social/views/tabs/update_register.dart';
 import 'package:flutter_social/views/user_details.dart';
 import 'package:flutter_social/views/chat_details.dart';
-import 'package:flutter_social/views/reset_password.dart';
 import 'package:flutter_social/views/source_photo.dart';
+import 'package:flutter_social/views/reset_password.dart';
+import 'package:flutter_social/views/tabs/update_register.dart';
+import 'package:flutter_social/views/tabs/information_plant.dart';
 
 final routes = {
   '/photo': (context) => Photo(),
@@ -24,6 +24,4 @@ final routes = {
   '/update_register': (context) => UpdateRegister(),
   '/reset_password': (context) => ResetPasswordPage(),
   '/information_plant': (context) => InformationPlant(),
-
-
 };
