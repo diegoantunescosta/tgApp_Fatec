@@ -121,7 +121,10 @@ class _LoginPageState extends State<LoginPage> {
     final loginBtn = Container(
       margin: EdgeInsets.only(top: 40.0),
       height: 60.0,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7.0),
         border: Border.all(color: Colors.green.shade900),
@@ -149,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
     final forgotPassword = Padding(
       padding: EdgeInsets.only(top: 50.0),
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, '/'),
+        onTap: () => Navigator.pushNamed(context, '/reset_password'),
         child: Center(
           child: Text(
             'Esqueceu a Senha ?',
@@ -197,8 +200,14 @@ class _LoginPageState extends State<LoginPage> {
         child: Container(
           padding: EdgeInsets.only(top: 150.0, left: 30.0, right: 30.0),
           decoration: BoxDecoration(gradient: primaryGradient),
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

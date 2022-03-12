@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_social/models/user.dart';
 import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'dart:convert';
 
 class ProfilePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final User user = User(id: 1, name: 'Matt Maxwell', photo: '');
@@ -72,7 +71,10 @@ class ProfilePage extends StatelessWidget {
             shadowColor: Colors.white,
             child: Container(
               height: 220.0,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 border: Border.all(
@@ -136,14 +138,6 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              // _buildIconTile(LineIcons.money, Colors.red, 'My Wallet'),
-              // hr,
-              // _buildIconTile(LineIcons.diamond, Colors.blue, 'VIP Center'),
-              // hr,
-              // _buildIconTile(LineIcons.user_plus, Colors.orangeAccent, 'Find Friends'),
-              // hr,
-              // _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist'),
-              // hr,
               _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6),
                   'Configurações'),
             ],
@@ -157,7 +151,10 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               child: Column(
                 children: <Widget>[
                   Stack(
@@ -173,7 +170,8 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                   secondCard,
-                  thirdCard
+                  thirdCard,
+
                 ],
               ),
             ),

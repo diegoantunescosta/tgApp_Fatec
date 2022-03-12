@@ -106,7 +106,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
           child: MaterialButton(
             onPressed: () {
               if (_formKey.currentState.validate()) {
-                Navigator.of(context).pushNamed('/home');
+                Navigator.of(context).pushNamed('/profile');
               }
             },
             child: const Text(
@@ -182,7 +182,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   Widget _name(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: label = 'Chozé',
+        labelText: label ,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
           icon,
@@ -205,7 +205,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   Widget _email(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: label = 'choze@email.com',
+        labelText: label ,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
           icon,
@@ -228,7 +228,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   Widget _pais(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: label = 'Brasil',
+        labelText: label ,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
           icon,
@@ -251,7 +251,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   Widget _estado(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: label = 'São Paulo',
+        labelText: label ,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
           icon,
@@ -274,7 +274,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   Widget _cidade(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: label = 'Pompeia',
+        labelText: label ,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
           icon,
@@ -297,7 +297,7 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   Widget _endereco(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: label = ' Rua Equador, 19',
+        labelText: label,
         labelStyle: TextStyle(color: Colors.black),
         prefixIcon: Icon(
           icon,
