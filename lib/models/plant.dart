@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Teste {
-   final String id;
+class Plant {
+   final int id;
    final String name;
    final String image;
+   final String describe;
 
-   const Teste ({
+   const Plant ({
      this.id,
+     this.describe,
      @required this.name,
      @required this.image,
 

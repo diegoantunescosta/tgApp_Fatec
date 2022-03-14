@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/post.dart';
-// import 'package:flutter_social/utils/utils.dart';
+
 
 class FeedCard2 extends StatelessWidget {
   final Post post;

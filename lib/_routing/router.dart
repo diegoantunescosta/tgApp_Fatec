@@ -10,15 +10,16 @@ import 'package:flutter_social/views/source_photo.dart';
 import 'package:flutter_social/views/reset_password.dart';
 import 'package:flutter_social/views/tabs/update_register.dart';
 import 'package:flutter_social/views/tabs/information_plant.dart';
-import 'package:flutter_social/views/tabs/teste_list.dart';
 
+
+import '../views/tabs/panel_plants_user.dart';
 import '../views/tabs/profile.dart';
 
 final routes = {
   '/photo': (context) => Photo(),
   '/home': (context) => HomePage(),
   '/login': (context) => LoginPage(),
-  "/teste": (context) => TesteList(),
+  '/teste': (context) => PanelPlantUser(),
   '/splash': (context) => SplashPage(),
   '/profile': (context) => ProfilePage(),
   '/landing': (context) => LandingPage(),

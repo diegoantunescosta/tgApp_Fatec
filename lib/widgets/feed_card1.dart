@@ -57,6 +57,7 @@ class FeedCard1 extends StatelessWidget {
       ),
     );
 
+
     final cardContent = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -64,9 +65,11 @@ class FeedCard1 extends StatelessWidget {
         SizedBox(
           height: 5.0,
         ),
-        descriptionText
+        descriptionText,
       ],
     );
+
+
 
     return Container(
       height: 150.0,
@@ -90,7 +93,8 @@ class FeedCard1 extends StatelessWidget {
               ),
             ),
           ),
-          userImage
+          userImage,
+
         ],
       ),
     );
