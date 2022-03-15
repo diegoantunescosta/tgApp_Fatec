@@ -14,6 +14,7 @@ class FeedsPage extends StatefulWidget {
 final api = GetIt.I.get<API>();
 
 class _FeedsPageState extends State<FeedsPage> {
+
   Widget build(BuildContext context) {
     final List<User> users = [
       User(
@@ -102,12 +103,13 @@ class _FeedsPageState extends State<FeedsPage> {
               'https://images.tcdn.com.br/img/img_prod/936509/orquidea_mini_urucum_223_1_15f9af5fee56d3c5b37c94cb2708de0c.jpeg',
           user: users[3]),
     ];
-
+    double _currentSliderValue = 400;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Inicio'),
           backgroundColor: Colors.orangeAccent),
         body: SingleChildScrollView(
+
           child: Container(
             color: Colors.grey.withOpacity(0.1),
             padding: EdgeInsets.only(top: 40.0),
@@ -121,7 +123,16 @@ class _FeedsPageState extends State<FeedsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-
+                    Slider(
+                    value: _currentSliderValue,
+                    max: 1000,
+                    label: _currentSliderValue.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value;
+                      });
+                    },
+                  ),
                       FeedCard2(
                         post: posts[0],
                       ),

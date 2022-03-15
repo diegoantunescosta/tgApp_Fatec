@@ -86,7 +86,7 @@ class ProfilePage extends StatelessWidget {
       ],
     );
 
-    Widget _buildIconTile(IconData icon, Color color, String title) {
+    Widget _buildIconTilegroup(IconData icon, Color color, String title) {
       return ListTile(
         title: Text(
           title,
@@ -106,7 +106,38 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
         ),
-        trailing: Icon(LineIcons.chevron_circle_right),
+        trailing: new IconButton(
+          icon: new Icon (LineIcons.chevron_circle_right),
+          onPressed:  () => Navigator.pushNamed(context, '/panel_plant'),
+      ),
+      );
+    }
+
+
+    Widget _buildIconTileConfg(IconData icon, Color color, String title) {
+      return ListTile(
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        leading: Container(
+          height: 30.0,
+          width: 30.0,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Center(
+            child: Icon(
+              icon,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        trailing: new IconButton(
+          icon: new Icon (LineIcons.chevron_circle_right),
+          onPressed:  () => Navigator.pushNamed(context, '/register'),
+        ),
       );
     }
 
@@ -124,7 +155,7 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Grupos'),
+              _buildIconTilegroup(LineIcons.users, Colors.purpleAccent, 'Grupos'),
             ],
           ),
         ),
@@ -145,7 +176,7 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6),
+              _buildIconTileConfg(LineIcons.cogs, Colors.grey.withOpacity(0.6),
                   'Configurações'),
             ],
           ),
@@ -189,6 +220,7 @@ class ProfilePage extends StatelessWidget {
       ),
     ),
    );
+
   }
 }
 

@@ -114,21 +114,6 @@ class LandingPage extends StatelessWidget {
                 children: <Widget>[logo, appName, buttons],
               ),
             ),
-            Positioned(
-              bottom: 0,
-              child: Padding(
-                padding: EdgeInsets.only(left: 0.0),
-                child: Container(
-                  height: 100.0,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                     fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),
