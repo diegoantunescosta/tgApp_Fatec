@@ -10,7 +10,7 @@ class FeedCardCrudPlant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userImage = Positioned(
-      right: 10,
+      right: 0,
       top: 15.0,
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, '/information_plant',
@@ -64,7 +64,7 @@ class FeedCardCrudPlant extends StatelessWidget {
     );
 
     final descriptionText = Container(
-      height: 80.0,
+      height: 20.0,
       child: Text(
         plant.describe,
         style: TextStyle(
@@ -78,10 +78,8 @@ class FeedCardCrudPlant extends StatelessWidget {
     final cardContent = Column(
 
       children: <Widget>[
-
-        SizedBox(
-          height: 25.0,
-          width: 50.0,
+        Padding(
+          padding: EdgeInsets.only(top: 70.0),
         ),
         userName,
         descriptionText
@@ -95,24 +93,26 @@ class FeedCardCrudPlant extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(right: 40.0),
+                padding: const EdgeInsets.only(right: 30.0),
                 child: Material(
                   elevation: 20.0,
                   borderRadius: BorderRadius.circular(14.0),
                   child: Container(
-                      padding: EdgeInsets.only(top: 20.0, right: 100.0, left: 20.0),
+                      padding: EdgeInsets.only(top: 20.0, right: 50.0, left: 20.0),
                       height: 150.0,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(14.0),
                       ),
-                      child: cardContent
+                      child: cardContent,
+
 
                   ),
                 ),
               ),
-              userImage, crud
+              crud,
+              userImage,
             ],
           ),
     );

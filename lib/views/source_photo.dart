@@ -7,8 +7,8 @@ class SourcePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Selecione a imagem'),
-      ),
+        title: const Text('Selecione Midia'),
+          backgroundColor: Colors.orangeAccent),
       body: ListView(
         children: [
           CameraButtonWidget(),

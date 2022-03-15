@@ -116,19 +116,7 @@ class ChatsPage extends StatelessWidget {
           messages: [messages[0], messages[1], messages[2], messages[3]]),
     ];
 
-    final pageTitle = Padding(
-      padding: EdgeInsets.only(top: 1.0, bottom: 20.0),
-      child: Text(
-        "Chats",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 40.0,
-        ),
-      ),
-    );
-
-    final searchBar = Container(
+   final searchBar = Container(
       padding: EdgeInsets.only(left: 20.0, right: 20.0),
       height: 50.0,
       width: deviceWidth,
@@ -193,6 +181,9 @@ class ChatsPage extends StatelessWidget {
     );
 
     return Scaffold(
+      appBar: AppBar(
+          title: const Text('Chats'),
+          backgroundColor: Colors.orangeAccent),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 40.0),
@@ -205,7 +196,6 @@ class ChatsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    pageTitle,
                     searchBar,
                     onlineUsers,
                     chatList

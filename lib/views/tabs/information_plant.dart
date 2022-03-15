@@ -1,21 +1,31 @@
 import '../../utils/accordion.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_social/utils/colors.dart';
-import 'package:flutter_social/utils/utils.dart';
+
 
 class InformationPlant extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final image = Container(
-      height: 300.0,
-      width: 200.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14.0),
-        image: DecorationImage(
-          // Imagem da plata Aqui
-          image: AvailableImages.appLogo,
+      height:180,
+      width:180,
+        child: Material(
+          elevation: 5.0,
+          borderRadius: BorderRadius.circular(14.0),
+          child: Container(
+
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14.0),
+              image: DecorationImage(
+                // image: AssetImage(feed.imagePath),
+                image: NetworkImage ('https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg'),
+                // image: AvailableImages.appLogo,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ),
-      ),
     );
 
     final info = Stack(
@@ -27,7 +37,7 @@ class InformationPlant extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             shadowColor: Colors.white,
             child: Container(
-              height: 200.0,
+              height: 200,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),

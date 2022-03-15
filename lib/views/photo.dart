@@ -14,10 +14,10 @@ class _PhotoState extends State<Photo> {
   MediaSource source;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text('teste'),
-        ),
+  Widget build(BuildContext context) => Scaffold( appBar: AppBar(
+      title: const Text('Carregamento de Midias'),
+      backgroundColor: Colors.orangeAccent),
+
         body: Center(
           child: Padding(
             padding: EdgeInsets.all(32),
@@ -35,15 +35,18 @@ class _PhotoState extends State<Photo> {
                 ElevatedButton(
                   child: Text('Imagem'),
                   style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.orangeAccent),
                       minimumSize: MaterialStateProperty.all(Size(90, 60))),
-                  onPressed: () => capture(MediaSource.image),
+                      onPressed: () => capture(MediaSource.image),
                 ),
                 const SizedBox(height: 50),
                 ElevatedButton(
                   child: Text(' Video'),
                   style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.orangeAccent),
                       minimumSize: MaterialStateProperty.all(Size(90, 60))),
-                  onPressed: () => capture(MediaSource.video),
+                      onPressed: () => capture(MediaSource.video),
+
                 ),
               ],
             ),

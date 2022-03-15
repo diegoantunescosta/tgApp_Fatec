@@ -123,8 +123,7 @@ class LandingPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AvailableImages.homePage,
-                      fit: BoxFit.contain,
+                     fit: BoxFit.contain,
                     ),
                   ),
                 ),

@@ -16,46 +16,39 @@ class _PanelPlantUserState extends State<PanelPlantUser> {
           name: 'Nome da planta',
           image:
           'https://cdn.pixabay.com/photo/2013/08/22/19/18/flowers-174817__340.jpg',
-          describe: 'Subtitulo da planta'),
+          describe: 'Espécie da planta'),
       Plant(
           id: 2,
           name: 'Nome da planta',
           image:
           'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg',
-          describe: 'Subtitulo da planta'),
+          describe: 'Espécie da planta'),
       Plant(
           id: 3,
           name: 'Nome da planta',
           image:
           'https://cdn.pixabay.com/photo/2015/04/19/08/33/flower-729512__340.jpg',
-          describe: 'Subtitulo da planta'),
+          describe: 'Espécie da planta'),
       Plant(
           id: 4,
           name: 'Nome da planta',
           image:
           'https://cdn.pixabay.com/photo/2015/04/19/08/32/rose-729509__340.jpg',
-          describe: 'Subtitulo da planta'),
+          describe: 'Espécie da planta'),
       Plant(
           id: 5,
           name: 'Nome da planta',
           image:
           'https://cdn.pixabay.com/photo/2017/06/12/17/54/anemone-2396299__340.jpg',
-          describe: 'Subtitulo da planta'),
+          describe: 'Espécie da planta'),
 
     ];
-    final pageTitle = Padding(
-      padding: EdgeInsets.only(top: 1.0, bottom: 30.0),
-      child: Text(
-        "Painel de Postagens",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 40.0,
-        ),
-      ),
-    );
+
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Painel de Postagens'),
+        backgroundColor: Colors.orangeAccent),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.grey.withOpacity(0.1),
@@ -70,7 +63,6 @@ class _PanelPlantUserState extends State<PanelPlantUser> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    pageTitle,
 
                     FeedCardCrudPlant(
                       plant: testes[0],

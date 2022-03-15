@@ -20,32 +20,6 @@ class _UpdateRegisterState extends State<UpdateRegister> {
   @override
   Widget build(BuildContext context) {
 
-    final text = Text(
-      'Atualização de Cadastro',
-      textAlign: TextAlign.center,
-        style: TextStyle(
-          fontWeight: FontWeight.w800,
-          fontSize: 30.0,
-          color: Colors.black),
-    );
-
-    final appBar = Padding(
-      padding: EdgeInsets.only(bottom: 40.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-
-          IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
-    );
-
     final image = Container(
       height: 300.0,
       width: 200.0,
@@ -153,19 +127,20 @@ class _UpdateRegisterState extends State<UpdateRegister> {
       ],
     );
     return Scaffold(
+      appBar: AppBar(
+          title: const Text('Atualização de Cadastro'),
+          backgroundColor: Colors.orangeAccent),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 40.0),
           child: Column(
             children: <Widget>[
-              appBar,
               Container(
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    text,
                     info,
                     registerForm,
                     submitBtn,

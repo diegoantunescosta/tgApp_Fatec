@@ -1,41 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/user.dart';
-import 'package:flutter_social/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
+
+import '../../utils/colors.dart';
 
 class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final User user = User(id: 1, name: 'Matt Maxwell', photo: '');
-
-    // final hr = Divider();
-    final userStats = Positioned(
-      bottom: 10.0,
-      left: 40.0,
-      right: 40.0,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          _buildUserStats('VISITANTES', '2305'),
-          _buildUserStats('CURTIDAS', '276'),
-          _buildUserStats('SEGUIDORES', '51'),
-        ],
-      ),
-    );
-
-    final userImage = Container(
-      height: 100.0,
-      width: 100.0,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(
-              "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg"),
-          fit: BoxFit.cover,
-        ),
-        shape: BoxShape.circle,
-      ),
-    );
+    final User user = User(id: 1, name: 'Nome do Cliente', photo: 'https://cdn.pixabay.com/photo/2017/06/12/17/54/anemone-2396299__340.jpg');
 
     final userNameLocation = Container(
       child: Column(
@@ -50,7 +23,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Text(
-            'cidade',
+            'São Paulo, SP',
             style: TextStyle(
               color: Colors.grey.withOpacity(0.6),
               fontSize: 20.0,
@@ -61,16 +34,29 @@ class ProfilePage extends StatelessWidget {
       ),
     );
 
+    final userImage = Container(
+      height: 100.0,
+      width: 100.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage('https://cdn.pixabay.com/photo/2016/03/23/08/34/woman-1274361__340.jpg')
+              ,
+          fit: BoxFit.cover,
+        ),
+        shape: BoxShape.circle,
+      ),
+    );
+
     final userInfo = Stack(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+          padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
           child: Material(
-            elevation: 5.0,
+            elevation: 30.0,
             borderRadius: BorderRadius.circular(8.0),
             shadowColor: Colors.white,
             child: Container(
-              height: 220.0,
+              height: 150.0,
               width: MediaQuery
                   .of(context)
                   .size
@@ -83,9 +69,10 @@ class ProfilePage extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Padding(
-                padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
+                padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
                 child: Row(
                   children: <Widget>[
+
                     userImage,
                     SizedBox(width: 10.0),
                     userNameLocation
@@ -95,12 +82,36 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
         ),
-        userStats
+
       ],
     );
 
+    Widget _buildIconTile(IconData icon, Color color, String title) {
+      return ListTile(
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        leading: Container(
+          height: 30.0,
+          width: 30.0,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Center(
+            child: Icon(
+              icon,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        trailing: Icon(LineIcons.chevron_circle_right),
+      );
+    }
+
     final secondCard = Padding(
-      padding: EdgeInsets.only(right: 20.0, left: 20.0, bottom: 30.0),
+      padding: EdgeInsets.only(right: 20.0, left: 20.0, bottom: 10.0),
       child: Material(
         elevation: 5.0,
         borderRadius: BorderRadius.circular(8.0),
@@ -113,10 +124,6 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              //   _buildIconTile(Icons.favorite, Colors.red, 'Likes'),
-              //   hr,
-              //   _buildIconTile(LineIcons.eye, Colors.green, 'Visitors'),
-              //   hr,
               _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Grupos'),
             ],
           ),
@@ -142,89 +149,63 @@ class ProfilePage extends StatelessWidget {
                   'Configurações'),
             ],
           ),
+
         ),
+
       ),
     );
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+   return Scaffold(
+     appBar: AppBar(
+         title: const Text('Perfil'),
+        backgroundColor: Colors.orangeAccent),
+     body: Center(
               child: Column(
-                children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                        height: 350.0,
-                      ),
-                      Container(
-                        height: 250.0,
-                        decoration: BoxDecoration(gradient: primaryGradient),
-                      ),
-                      Positioned(top: 100, right: 0, left: 0, child: userInfo)
-                    ],
-                  ),
-                  secondCard,
-                  thirdCard,
-
-                ],
+          children: <Widget>[
+                 Stack(
+                  children: <Widget>[
+                    Container(
+                      height: 230.0,
+                    ),
+                    Container(
+                    height: 150.0,
+                    decoration: BoxDecoration(gradient: primaryGradient),
+                    ),
+                    Positioned(top: 50, right: 0, left: 0,
+                        child: userInfo)
+                  ],
+              ),
+                    secondCard,
+                    thirdCard,
+                  ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _buildUserStats(String name, String value) {
-    return Column(
-      children: <Widget>[
-        Text(
-          name,
-          style: TextStyle(
-            color: Colors.grey.withOpacity(0.6),
-            fontWeight: FontWeight.w600,
-            fontSize: 16.0,
-          ),
-        ),
-        Text(
-          value,
-          style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.w900,
-            fontSize: 20.0,
-          ),
-        ),
-      ],
-    );
-  }
+            floatingActionButton: FloatingActionButton(
+              tooltip: 'Adicionar',
+              child: Icon(Icons.add),
+              onPressed: () => Navigator.pushNamed(context, '/panel_plant',
 
-  Widget _buildIconTile(IconData icon, Color color, String title) {
-    return ListTile(
-      title: Text(
-        title,
-        style: TextStyle(fontWeight: FontWeight.bold),
       ),
-      leading: Container(
-        height: 30.0,
-        width: 30.0,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Center(
-          child: Icon(
-            icon,
-            color: Colors.white,
-          ),
-        ),
-      ),
-      trailing: Icon(LineIcons.chevron_circle_right),
-    );
+    ),
+   );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

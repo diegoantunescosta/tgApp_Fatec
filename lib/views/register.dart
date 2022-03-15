@@ -16,32 +16,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = Padding(
-      padding: EdgeInsets.only(bottom: 40.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-          )
-        ],
-      ),
-    );
-
-    final pageTitle = Container(
-      child: Text(
-        "Cadastro",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 40.0,
-        ),
-      ),
-    );
 
     final formFieldSpacing = SizedBox(
       height: 30.0,
@@ -107,18 +81,21 @@ class _RegisterPageState extends State<RegisterPage> {
     );
 
     return Scaffold(
+      appBar: AppBar(
+          title: const Text('Cadastro'),
+          backgroundColor: Colors.orangeAccent),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 40.0),
-          child: Column(
+            child: Column(
             children: <Widget>[
-              appBar,
+
               Container(
                 padding: EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    pageTitle,
+
                     registerForm,
                     submitBtn,
                   ],

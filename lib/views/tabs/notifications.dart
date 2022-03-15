@@ -5,19 +5,9 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
-    final deviceWidth = MediaQuery.of(context).size.width;
 
-    final pageTitle = Padding(
-      padding: EdgeInsets.only(top: 1.0, bottom: 30.0),
-      child: Text(
-        "Notifications",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 40.0,
-        ),
-      ),
-    );
+
+
 
     final image = Image.asset(
 
@@ -26,8 +16,8 @@ class NotificationsPage extends StatelessWidget {
       width: 90.0,
     );
 
-    final notificationHeader = Container(
-      padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
+    final notificationHeader = Center(
+
       child: Text(
         "Não existe nova notificação",
         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24.0),
@@ -44,19 +34,15 @@ class NotificationsPage extends StatelessWidget {
     );
 
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(
-          top: 50.0,
-          left: 30.0,
-          right: 30.0,
-          bottom: 30.0,
-        ),
-        height: deviceHeight,
-        width: deviceWidth,
+        appBar: AppBar(
+        title: const Text('Notificações'),
+        backgroundColor: Colors.orangeAccent,),
+        body: new Center(
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            pageTitle,
+
             SizedBox(
               height: deviceHeight * 0.1,
             ),
