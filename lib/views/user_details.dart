@@ -35,7 +35,8 @@ class UserDetailsPage extends StatelessWidget {
 
     );
 
-    final userImage = Stack(
+    final userImage =
+    Stack(
       children: <Widget>[
         Hero(
           tag: user.id,
