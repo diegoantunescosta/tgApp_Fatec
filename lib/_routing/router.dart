@@ -3,13 +3,14 @@ import 'package:flutter_social/views/photo.dart';
 import 'package:flutter_social/views/login.dart';
 import 'package:flutter_social/views/splash.dart';
 import 'package:flutter_social/views/landing.dart';
-import 'package:flutter_social/views/register.dart';
+import 'package:flutter_social/views/register_user.dart';
 import 'package:flutter_social/views/user_details.dart';
 import 'package:flutter_social/views/chat_details.dart';
 import 'package:flutter_social/views/source_photo.dart';
 import 'package:flutter_social/views/reset_password.dart';
 import 'package:flutter_social/views/tabs/update_register.dart';
 import 'package:flutter_social/views/tabs/information_plant.dart';
+import '../views/register_plant.dart';
 import '../views/tabs/panel_plants_user.dart';
 import '../views/tabs/profile.dart';
 
@@ -21,7 +22,8 @@ final routes = {
   '/splash': (context) => SplashPage(),
   '/profile': (context) => ProfilePage(),
   '/landing': (context) => LandingPage(),
-  '/register': (context) => RegisterPage(),
+  '/register_user': (context) => RegisterPage(),
+  '/register_plant': (context) => RegisterPlant(),
   '/source_photo': (context) => SourcePage(),
   '/chat_details': (context) => ChatDetailsPage(),
   '/user_details': (context) => UserDetailsPage(),

@@ -215,7 +215,7 @@ class ProfilePage extends StatelessWidget {
             floatingActionButton: FloatingActionButton(
               tooltip: 'Adicionar',
               child: Icon(Icons.add),
-              onPressed: () => Navigator.pushNamed(context, '/panel_plant',
+              onPressed: () => Navigator.pushNamed(context, '/register_plant',
 
       ),
     ),
