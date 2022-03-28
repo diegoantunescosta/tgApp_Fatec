@@ -72,7 +72,7 @@ class LandingPage extends StatelessWidget {
         color: Colors.green.shade900,
       ),
       child: ElevatedButton(
-        onPressed: () => Navigator.pushNamed(context, '/register'),
+        onPressed: () => Navigator.pushNamed(context, '/register_user'),
         style: ElevatedButton.styleFrom(
             elevation: 2,
             shape: new RoundedRectangleBorder(

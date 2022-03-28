@@ -16,7 +16,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-
     final formFieldSpacing = SizedBox(
       height: 30.0,
     );
@@ -82,20 +81,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Cadastro'),
-          backgroundColor: Colors.orangeAccent),
+          title: const Text('Cadastro'), backgroundColor: Colors.orangeAccent),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 40.0),
-            child: Column(
+          child: Column(
             children: <Widget>[
-
               Container(
                 padding: EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-
                     registerForm,
                     submitBtn,
                   ],
@@ -178,96 +174,116 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  String dropdownValuePais = 'Pais';
   Widget _pais(String label, IconData icon) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: Colors.black),
-        prefixIcon: Icon(
-          icon,
-          color: Colors.black38,
+    return DropdownButtonFormField(
+        decoration: InputDecoration(
+          labelStyle: TextStyle(color: Colors.black),
+          labelText: label,
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black38,
+          ),
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange),
-        ),
-      ),
-      keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.black),
-      cursorColor: Colors.black,
-      validator: validate.name,
-    );
+        dropdownColor: Colors.white,
+        onChanged: (String newValue) {
+          setState(() {
+            dropdownValuePais = newValue;
+          });
+        },
+        items: <String>['Pais', 'Pais 2', 'Pais 3', 'Pais 4']
+            .map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem(
+            value: value,
+            child: Text(
+              value,
+            ),
+          );
+        }).toList());
   }
 
+  String dropdownValueEstado = 'Estado';
   Widget _estado(String label, IconData icon) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: Colors.black),
-        prefixIcon: Icon(
-          icon,
-          color: Colors.black38,
+    return DropdownButtonFormField(
+        decoration: InputDecoration(
+          labelStyle: TextStyle(color: Colors.black),
+          labelText: label,
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black38,
+          ),
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange),
-        ),
-      ),
-      keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.black),
-      cursorColor: Colors.black,
-      validator: validate.name,
-    );
+        dropdownColor: Colors.white,
+        onChanged: (String newValue) {
+          setState(() {
+            dropdownValueEstado = newValue;
+          });
+        },
+        items: <String>['Estado', 'Estado 2', 'Estado 3', 'Estado 4']
+            .map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem(
+            value: value,
+            child: Text(
+              value,
+            ),
+          );
+        }).toList());
   }
 
+  String dropdownValueCidade = 'Cidade';
   Widget _cidade(String label, IconData icon) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: Colors.black),
-        prefixIcon: Icon(
-          icon,
-          color: Colors.black38,
+    return DropdownButtonFormField(
+        decoration: InputDecoration(
+          labelStyle: TextStyle(color: Colors.black),
+          labelText: label,
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black38,
+          ),
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange),
-        ),
-      ),
-      keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.black),
-      cursorColor: Colors.black,
-      validator: validate.name,
-    );
+        dropdownColor: Colors.white,
+        onChanged: (String newValue) {
+          setState(() {
+            dropdownValueCidade = newValue;
+          });
+        },
+        items: <String>['Cidade', 'Cidade 2', 'Cidade 3', 'Cidade 4']
+            .map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem(
+            value: value,
+            child: Text(
+              value,
+            ),
+          );
+        }).toList());
   }
 
+  String dropdownValueEndereco = 'Endereço';
   Widget _endereco(String label, IconData icon) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: Colors.black),
-        prefixIcon: Icon(
-          icon,
-          color: Colors.black38,
+    return DropdownButtonFormField(
+        decoration: InputDecoration(
+          labelStyle: TextStyle(color: Colors.black),
+          labelText: label,
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black38,
+          ),
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange),
-        ),
-      ),
-      keyboardType: TextInputType.text,
-      style: TextStyle(color: Colors.black),
-      cursorColor: Colors.black,
-      validator: validate.name,
-    );
+        dropdownColor: Colors.white,
+        onChanged: (String newValue) {
+          setState(() {
+            dropdownValueEndereco = newValue;
+          });
+        },
+        items: <String>['Endereço', 'Endereço2', 'Endereço 3', 'Endereço 4']
+            .map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem(
+            value: value,
+            child: Text(
+              value,
+            ),
+          );
+        }).toList());
   }
 
   @override
