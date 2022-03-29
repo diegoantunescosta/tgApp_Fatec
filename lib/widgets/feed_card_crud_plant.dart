@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social/models/plant.dart';
 
-
 class FeedCardCrudPlant extends StatelessWidget {
   final Plant plant;
 
@@ -15,8 +14,6 @@ class FeedCardCrudPlant extends StatelessWidget {
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, '/information_plant',
             arguments: plant.image),
-        // child: Hero(
-        //   tag: post.image,
         child: Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(14.0),
@@ -26,9 +23,7 @@ class FeedCardCrudPlant extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14.0),
               image: DecorationImage(
-                // image: AssetImage(feed.imagePath),
                 image: NetworkImage(plant.image),
-                // image: AvailableImages.appLogo,
                 fit: BoxFit.cover,
               ),
             ),
@@ -42,11 +37,13 @@ class FeedCardCrudPlant extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         IconButton(
+          padding: EdgeInsets.only(top: 30.0),
           icon: Icon(Icons.edit),
           color: Colors.blue,
           onPressed: () {},
         ),
         IconButton(
+          padding: EdgeInsets.only(top: 30.0),
           icon: Icon(Icons.delete),
           color: Colors.red,
           onPressed: () {},
@@ -76,48 +73,41 @@ class FeedCardCrudPlant extends StatelessWidget {
     );
 
     final cardContent = Column(
-
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(top: 70.0),
+          padding: EdgeInsets.only(top: 30.0),
         ),
         userName,
         descriptionText
       ],
     );
 
-
-    return  Container(
-          height: 150.0,
-          width: MediaQuery.of(context).size.width,
-          child: Stack(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(right: 30.0),
-                child: Material(
-                  elevation: 20.0,
+    return Container(
+      height: 150.0,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 30.0),
+            child: Material(
+              elevation: 20.0,
+              borderRadius: BorderRadius.circular(14.0),
+              child: Container(
+                padding: EdgeInsets.only(top: 20.0, right: 50.0, left: 20.0),
+                height: 150.0,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(14.0),
-                  child: Container(
-                      padding: EdgeInsets.only(top: 20.0, right: 50.0, left: 20.0),
-                      height: 150.0,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.0),
-                      ),
-                      child: cardContent,
-
-
-                  ),
                 ),
+                child: cardContent,
               ),
-              crud,
-              userImage,
-            ],
+            ),
           ),
+          crud,
+          userImage,
+        ],
+      ),
     );
-
-
-
   }
 }

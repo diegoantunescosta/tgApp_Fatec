@@ -5,10 +5,13 @@ import 'package:line_icons/line_icons.dart';
 import '../../utils/colors.dart';
 
 class ProfilePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final User user = User(id: 1, name: 'Nome do Cliente', photo: 'https://cdn.pixabay.com/photo/2017/06/12/17/54/anemone-2396299__340.jpg');
+    final User user = User(
+        id: 1,
+        name: 'Nome do Cliente',
+        photo:
+            'https://cdn.pixabay.com/photo/2017/06/12/17/54/anemone-2396299__340.jpg');
 
     final userNameLocation = Container(
       child: Column(
@@ -39,8 +42,8 @@ class ProfilePage extends StatelessWidget {
       width: 100.0,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage('https://cdn.pixabay.com/photo/2016/03/23/08/34/woman-1274361__340.jpg')
-              ,
+          image: NetworkImage(
+              'https://cdn.pixabay.com/photo/2016/03/23/08/34/woman-1274361__340.jpg'),
           fit: BoxFit.cover,
         ),
         shape: BoxShape.circle,
@@ -57,10 +60,7 @@ class ProfilePage extends StatelessWidget {
             shadowColor: Colors.white,
             child: Container(
               height: 150.0,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 border: Border.all(
@@ -72,7 +72,6 @@ class ProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
                 child: Row(
                   children: <Widget>[
-
                     userImage,
                     SizedBox(width: 10.0),
                     userNameLocation
@@ -82,7 +81,6 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
 
@@ -107,12 +105,11 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         trailing: new IconButton(
-          icon: new Icon (LineIcons.chevron_circle_right),
-          onPressed:  () => Navigator.pushNamed(context, '/panel_plant'),
-      ),
+          icon: new Icon(LineIcons.chevron_circle_right),
+          onPressed: () => Navigator.pushNamed(context, '/panel_plant'),
+        ),
       );
     }
-
 
     Widget _buildIconTileConfg(IconData icon, Color color, String title) {
       return ListTile(
@@ -135,8 +132,8 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         trailing: new IconButton(
-          icon: new Icon (LineIcons.chevron_circle_right),
-          onPressed:  () => Navigator.pushNamed(context, '/register'),
+          icon: new Icon(LineIcons.chevron_circle_right),
+          onPressed: () => Navigator.pushNamed(context, '/register'),
         ),
       );
     }
@@ -155,7 +152,8 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTilegroup(LineIcons.users, Colors.purpleAccent, 'Grupos'),
+              _buildIconTilegroup(
+                  LineIcons.users, Colors.purpleAccent, 'Painel de Postagens'),
             ],
           ),
         ),
@@ -180,64 +178,41 @@ class ProfilePage extends StatelessWidget {
                   'Configurações'),
             ],
           ),
-
         ),
-
       ),
     );
 
-   return Scaffold(
-     appBar: AppBar(
-         title: const Text('Perfil'),
-        backgroundColor: Colors.orangeAccent),
-     body: Center(
-              child: Column(
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text('Perfil'), backgroundColor: Colors.orangeAccent),
+      body: Center(
+        child: Column(
           children: <Widget>[
-                 Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 230.0,
-                    ),
-                    Container(
-                    height: 150.0,
-                    decoration: BoxDecoration(gradient: primaryGradient),
-                    ),
-                    Positioned(top: 50, right: 0, left: 0,
-                        child: userInfo)
-                  ],
-              ),
-                    secondCard,
-                    thirdCard,
-                  ],
-              ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  height: 230.0,
+                ),
+                Container(
+                  height: 150.0,
+                  decoration: BoxDecoration(gradient: primaryGradient),
+                ),
+                Positioned(top: 50, right: 0, left: 0, child: userInfo)
+              ],
             ),
-
-            floatingActionButton: FloatingActionButton(
-              tooltip: 'Adicionar',
-              child: Icon(Icons.add),
-              onPressed: () => Navigator.pushNamed(context, '/register_plant',
-
+            secondCard,
+            thirdCard,
+          ],
+        ),
       ),
-    ),
-   );
-
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Adicionar',
+        child: Icon(Icons.add),
+        onPressed: () => Navigator.pushNamed(
+          context,
+          '/register_plant',
+        ),
+      ),
+    );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

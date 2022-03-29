@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Change Status Bar Color
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: primaryColor),
     );
@@ -40,6 +39,23 @@ class LandingPage extends StatelessWidget {
       ],
     );
 
+    final group = Padding(
+      padding: EdgeInsets.only(top: 50.0),
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(context, '/devpage'),
+        child: Center(
+          child: Text(
+            'Equipe de Desenvolvimento',
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
+    );
+
     final loginBtn = InkWell(
       onTap: () => Navigator.pushNamed(context, '/login'),
       child: Container(
@@ -63,27 +79,24 @@ class LandingPage extends StatelessWidget {
       ),
     );
 
-    final registerBtn = Container(
-      height: 60.0,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(color: Colors.green.shade900),
-        color: Colors.green.shade900,
-      ),
-      child: ElevatedButton(
-        onPressed: () => Navigator.pushNamed(context, '/register_user'),
-        style: ElevatedButton.styleFrom(
-            elevation: 2,
-            shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(7.0),
-            )),
-        child: Text(
-          'INSCREVER-SE',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 20.0,
-            color: Colors.green.shade900,
+    final CadastrarBtn = InkWell(
+      onTap: () => Navigator.pushNamed(context, '/register_user'),
+      child: Container(
+        height: 60.0,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(color: Colors.green.shade900),
+          color: Colors.white,
+        ),
+        child: Center(
+          child: Text(
+            'CADASTRAR',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20.0,
+              color: Colors.green.shade900,
+            ),
           ),
         ),
       ),
@@ -97,7 +110,7 @@ class LandingPage extends StatelessWidget {
         right: 30.0,
       ),
       child: Column(
-        children: <Widget>[loginBtn, SizedBox(height: 20.0), registerBtn],
+        children: <Widget>[loginBtn, SizedBox(height: 20.0), CadastrarBtn],
       ),
     );
 
@@ -111,7 +124,12 @@ class LandingPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Column(
-                children: <Widget>[logo, appName, buttons],
+                children: <Widget>[
+                  logo,
+                  appName,
+                  buttons,
+                  group,
+                ],
               ),
             ),
           ],

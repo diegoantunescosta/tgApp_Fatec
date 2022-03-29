@@ -16,20 +16,19 @@ class _RegisterPlantState extends State<RegisterPlant> {
 
   @override
   Widget build(BuildContext context) {
-
     final formFieldSpacing = SizedBox(
       height: 30.0,
     );
 
     final image = Container(
-      height: 300.0,
+      height: 600.0,
       width: 200.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.0),
         image: DecorationImage(
-          // Imagem da plata Aqui
-            image: NetworkImage ('https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg')
-        ),
+            // Imagem da plata Aqui
+            image: NetworkImage(
+                'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg')),
       ),
     );
     final imagemplant = Stack(
@@ -44,14 +43,12 @@ class _RegisterPlantState extends State<RegisterPlant> {
               height: 200.0,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14.0),
+                borderRadius: BorderRadius.circular(0.0),
                 border: Border.all(
                   color: Colors.grey.withOpacity(0.2),
                 ),
                 color: Colors.white,
               ),
-              // child: Padding(
-              //   padding: const EdgeInsets.only(left: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -74,9 +71,8 @@ class _RegisterPlantState extends State<RegisterPlant> {
             formFieldSpacing,
             _name('Nome', LineIcons.navicon),
             formFieldSpacing,
-            _name('Descrição', LineIcons.navicon),
+            _descript('Descrição', LineIcons.navicon),
             formFieldSpacing,
-
           ],
         ),
       ),
@@ -116,8 +112,6 @@ class _RegisterPlantState extends State<RegisterPlant> {
       ),
     );
 
-
-
     return Scaffold(
       appBar: AppBar(
           title: const Text('Cadastrar Planta'),
@@ -127,13 +121,11 @@ class _RegisterPlantState extends State<RegisterPlant> {
           padding: EdgeInsets.only(top: 40.0),
           child: Column(
             children: <Widget>[
-
               Container(
                 padding: EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-
                     registerForm,
                     submitBtn,
                   ],
@@ -146,7 +138,35 @@ class _RegisterPlantState extends State<RegisterPlant> {
     );
   }
 
+  String dropdownValueCidade = 'Nome';
   Widget _name(String label, IconData icon) {
+    return DropdownButtonFormField(
+        decoration: InputDecoration(
+          labelStyle: TextStyle(color: Colors.black),
+          labelText: label,
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black38,
+          ),
+        ),
+        dropdownColor: Colors.white,
+        onChanged: (String newValue) {
+          setState(() {
+            dropdownValueCidade = newValue;
+          });
+        },
+        items: <String>['Planta 1', 'Planta 2', 'Planta 3', 'Planta 4']
+            .map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem(
+            value: value,
+            child: Text(
+              value,
+            ),
+          );
+        }).toList());
+  }
+
+  Widget _descript(String label, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
         labelText: label,
@@ -168,8 +188,6 @@ class _RegisterPlantState extends State<RegisterPlant> {
       validator: validate.name,
     );
   }
-
-
 
   @override
   void dispose() {
